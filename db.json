@@ -45,6 +45,7 @@
             "lastname": "Johnson",
             "email": "eva@company.com",
             "mentorId": 3,
+            "department": "Informatique",
             "paid": false,
             "salary": 0
         }
