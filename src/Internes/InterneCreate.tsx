@@ -32,6 +32,8 @@ export const InterneCreate = () => (
         choices={departmentChoices}
         validate={required()}
       />
+      <BooleanInput source="paid" label="Payé" 
+      validate={required()}/>
       <NumberInput
         source="salary"
         label="Salaire"
