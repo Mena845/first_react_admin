@@ -27,10 +27,28 @@
             "salary": 2600,
             "active": false 
         }
+    ],
+
+    "Internes": [
+        {
+            "id": 1,
+            "firstname": "David",
+            "lastname": "Smith",
+            "email": "david@company.com"
+            "mentorId": 1
+            "paid":true
+            "slary": 1500
+        },
+        {
+            "id": 2,
+            "firstname": "Eva",
+            "lastname": "Johnson",
+            "email": "eva@company.com",
+            "mentorId": 3,
+            "paid": false,
+            "salary": 0
+        }
     ]
 }
 
 
-// stage -> ecadre(emplyee)
-// crud stage rattache evec encadrant
-// atao tabshow (employe + encadreur)
