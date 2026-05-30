@@ -16,7 +16,6 @@ export const InterneList = () => (
             <DataTable.Col source="paid">
                 <BooleanField source="paid" />
             </DataTable.Col>
-            <DataTable.NumberCol source="slary" />
             <DataTable.Col source="salary">
                 <DateField source="salary" />
             </DataTable.Col>
