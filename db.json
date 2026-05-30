@@ -34,9 +34,9 @@
             "id": 1,
             "firstname": "David",
             "lastname": "Smith",
-            "email": "david@company.com"
-            "mentorId": 1
-            "paid":true
+            "email": "david@company.com",
+            "mentorId": 1,
+            "paid":true,
             "slary": 1500
         },
         {
