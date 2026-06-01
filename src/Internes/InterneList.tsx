@@ -11,13 +11,13 @@ export const InterneList = () => (
                 <EmailField source="email" />
             </DataTable.Col>
             <DataTable.Col source="mentorId">
-                <ReferenceField source="mentorId" reference="employees">
+                <ReferenceField source="mentorId" reference="Employees">
                     <FunctionField render={(record) => `${record.firstName} ${record.lastName}`} />
                 </ReferenceField>
             </DataTable.Col>
                 <DataTable.Col label='Departement'>
-                        <ReferenceField source='mentorId' reference='employees'>
-                        <TextField source='department'/>
+                        <ReferenceField source='mentorId' reference='Departments'>
+                        <TextField source='name'/>
                     </ReferenceField>
                 </DataTable.Col>
             <DataTable.Col source="paid">
