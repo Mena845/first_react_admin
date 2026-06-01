@@ -8,6 +8,7 @@ import {
   TopToolbar,
   ListButton,
   EditButton,
+  DeleteButton,
 } from "react-admin";
 
 const EmployeeShowActions = () => (
@@ -30,6 +31,7 @@ export const EmployeeShow = () => (
         options={{ style: "currency", currency: "EUR" }}
       />
       <BooleanField source="active" label="Actif" />
+         <EditButton />
     </SimpleShowLayout>
   </Show>
 );

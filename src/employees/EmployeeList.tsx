@@ -35,8 +35,6 @@ export const EmployeeList = () => (
         options={{ style: "currency", currency: "EUR" }}
       />
       <BooleanField source="active" label="Actif" />
-      <EditButton />
-      <DeleteButton />
     </Datagrid>
   </List>
 );

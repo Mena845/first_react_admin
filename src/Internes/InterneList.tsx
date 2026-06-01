@@ -1,18 +1,18 @@
 
-import { BooleanField, DataTable, DateField, EmailField, FunctionField, List, RecordContext, ReferenceField, TextField } from 'react-admin';
+import { BooleanField, DataTable, DateField, EditButton, EmailField, FunctionField, List, RecordContext, ReferenceField, TextField } from 'react-admin';
 
 export const InterneList = () => (
     <List>
         <DataTable>
             <DataTable.Col source="id" />
-            <DataTable.Col source="firstname" />
-            <DataTable.Col source="lastname" />
+            <DataTable.Col source="firstName" />
+            <DataTable.Col source="lastName" />
             <DataTable.Col source="email">
                 <EmailField source="email" />
             </DataTable.Col>
             <DataTable.Col source="mentorId">
                 <ReferenceField source="mentorId" reference="employees">
-                    <FunctionField render={(record) => `${record.firstname} ${record.lastname}`} />
+                    <FunctionField render={(record) => `${record.firstName} ${record.lastName}`} />
                 </ReferenceField>
             </DataTable.Col>
                 <DataTable.Col label='Departement'>
@@ -27,5 +27,7 @@ export const InterneList = () => (
                 <DateField source="salary" />
             </DataTable.Col>
         </DataTable>
+          <EditButton />
     </List>
+   
 );
