@@ -8,13 +8,8 @@ import {
   required,
   minValue,
   email,
+  ReferenceInput,
 } from "react-admin";
-
-const departmentChoices = [
-  { id: "Informatique", name: "Informatique" },
-  { id: "Marketing", name: "Marketing" },
-  { id: "RH", name: "RH" },
-];
 
 export const EmployeeCreate = () => (
   <Create redirect="list">
@@ -26,12 +21,9 @@ export const EmployeeCreate = () => (
         label="Email"
         validate={[required(), email()]}
       />
-      <SelectInput
-        source="department"
-        label="Département"
-        choices={departmentChoices}
-        validate={required()}
-      />
+      <ReferenceInput source="department" reference="Departments" label="Département">
+        <SelectInput optionText="name" />
+      </ReferenceInput>
       <NumberInput
         source="salary"
         label="Salaire"

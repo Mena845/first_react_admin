@@ -8,6 +8,7 @@ import {
   DeleteButton,
   SearchInput,
   SelectInput,
+  ReferenceField,
 } from "react-admin";
 
 const EmployeeFilter = [
@@ -28,7 +29,10 @@ export const EmployeeList = () => (
       <TextField source="firstName" label="Prénom" />
       <TextField source="lastName" label="Nom" />
       <TextField source="email" label="Email" />
-      <TextField source="department" label="Département" />
+        <ReferenceField source="department" reference="Departments">
+        <TextField source="name" />
+      </ReferenceField>
+    
       <NumberField
         source="salary"
         label="Salaire"

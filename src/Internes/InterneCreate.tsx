@@ -26,6 +26,13 @@ export const InterneCreate = () => (
         label="Email"
         validate={[required(), email()]}
       />
+      <SelectInput
+        source="department"
+        label="Département"
+        choices={departmentChoices}
+        validate={required()}
+      />
+      
       <BooleanInput source="paid" label="Payé" 
       validate={required()}/>
       <NumberInput

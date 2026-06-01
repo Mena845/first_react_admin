@@ -24,7 +24,7 @@ export const EmployeeShow = () => (
       <TextField source="firstName" label="Prénom" />
       <TextField source="lastName" label="Nom" />
       <EmailField source="email" label="Email" />
-      <TextField source="department" label="Département" />
+      <TextField source="Departements.name" label="Département" />
       <NumberField
         source="salary"
         label="Salaire"

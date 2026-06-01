@@ -9,13 +9,8 @@ import {
   minValue,
   email,
   useRecordContext,
+    ReferenceInput,
 } from "react-admin";
-
-const departmentChoices = [
-  { id: "Informatique", name: "Informatique" },
-  { id: "Marketing", name: "Marketing" },
-  { id: "RH", name: "RH" },
-];
 
 const EmployeeTitle = () => {
   const record = useRecordContext();
@@ -37,12 +32,9 @@ export const EmployeeEdit = () => (
         label="Email"
         validate={[required(), email()]}
       />
-      <SelectInput
-        source="department"
-        label="Département"
-        choices={departmentChoices}
-        validate={required()}
-      />
+       <ReferenceInput source="department" reference="Departments" label="Département">
+              <SelectInput optionText="name" validate={required()} />
+            </ReferenceInput>
       <NumberInput
         source="salary"
         label="Salaire (€)"
