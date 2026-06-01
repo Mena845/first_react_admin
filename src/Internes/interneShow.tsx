@@ -1,4 +1,4 @@
-import {TopToolbar, ListButton, EditButton, TextField, EmailField, NumberField, ReferenceField, Show, SimpleShowLayout, BooleanField} from "react-admin";
+import {TopToolbar, ListButton, EditButton, TextField, EmailField, NumberField, ReferenceField, Show, SimpleShowLayout, BooleanField, DateField} from "react-admin";
 const InterneShowActions = () => (
   <TopToolbar>
     <ListButton />
@@ -25,6 +25,7 @@ export const InterneShow = () => (
         label="Salaire"
         options={{ style: "currency", currency: "EUR" }}
       />
+      <DateField source="enterDate" label="Date d'Entree" options={{dateStyle: "short"}}/>
     </SimpleShowLayout>
   </Show>
 );

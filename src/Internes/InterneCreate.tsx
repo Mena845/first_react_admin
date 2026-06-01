@@ -9,6 +9,7 @@ import {
   minValue,
   email,
   ReferenceInput,
+  DateInput,
 } from "react-admin";
 
 export const InterneCreate = () => (
@@ -32,6 +33,8 @@ export const InterneCreate = () => (
         label="Salaire"
         validate={[required(), minValue(0)]}
       />
+      <DateInput
+      source="enterDate" label="Date d'Entrée"/>
     </SimpleForm>
   </Create>
 );
