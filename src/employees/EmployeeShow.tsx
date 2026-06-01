@@ -8,7 +8,7 @@ import {
   TopToolbar,
   ListButton,
   EditButton,
-  DeleteButton,
+  ReferenceField,
 } from "react-admin";
 
 const EmployeeShowActions = () => (
@@ -24,7 +24,9 @@ export const EmployeeShow = () => (
       <TextField source="firstName" label="Prénom" />
       <TextField source="lastName" label="Nom" />
       <EmailField source="email" label="Email" />
-      <TextField source="Departements.name" label="Département" />
+      <ReferenceField source="department" reference="Departments">
+        <TextField source="name" />
+      </ReferenceField>
       <NumberField
         source="salary"
         label="Salaire"

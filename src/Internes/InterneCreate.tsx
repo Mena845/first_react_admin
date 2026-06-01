@@ -8,13 +8,8 @@ import {
   required,
   minValue,
   email,
+  ReferenceInput,
 } from "react-admin";
-
-const departmentChoices = [
-  { id: "Informatique", name: "Informatique" },
-  { id: "Marketing", name: "Marketing" },
-  { id: "RH", name: "RH" },
-];
 
 export const InterneCreate = () => (
   <Create redirect="list">
@@ -26,12 +21,9 @@ export const InterneCreate = () => (
         label="Email"
         validate={[required(), email()]}
       />
-      <SelectInput
-        source="department"
-        label="Département"
-        choices={departmentChoices}
-        validate={required()}
-      />
+      <ReferenceInput source="mentorId" reference="Employees" label="Mentor">
+        <SelectInput optionText="firstName" validate={required()} />
+      </ReferenceInput>
       
       <BooleanInput source="paid" label="Payé" 
       validate={required()}/>
