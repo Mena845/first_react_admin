@@ -36,8 +36,8 @@
             "lastname": "Smith",
             "email": "david@company.com",
             "mentorId": 1,
-            "paid":true,
-            "slary": 1500
+            "paid": true,
+            "salary": 1500
         },
         {
             "id": 2,
@@ -45,7 +45,6 @@
             "lastname": "Johnson",
             "email": "eva@company.com",
             "mentorId": 3,
-            "department": "Informatique",
             "paid": false,
             "salary": 0
         }
