@@ -1,5 +1,5 @@
 
-import { BooleanField, DataTable, DateField, EmailField, FunctionField, List, RecordContext, ReferenceField } from 'react-admin';
+import { BooleanField, DataTable, DateField, EmailField, FunctionField, List, RecordContext, ReferenceField, TextField } from 'react-admin';
 
 export const InterneList = () => (
     <List>
@@ -15,6 +15,11 @@ export const InterneList = () => (
                     <FunctionField render={(record) => `${record.firstname} ${record.lastname}`} />
                 </ReferenceField>
             </DataTable.Col>
+                <DataTable.Col label='Departement'>
+                        <ReferenceField source='mentorId' reference='employees'>
+                        <TextField source='department'/>
+                    </ReferenceField>
+                </DataTable.Col>
             <DataTable.Col source="paid">
                 <BooleanField source="paid" />
             </DataTable.Col>
