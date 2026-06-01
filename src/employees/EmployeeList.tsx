@@ -25,8 +25,8 @@ const EmployeeFilter = [
 export const EmployeeList = () => (
   <List filters={EmployeeFilter} perPage={5}>
     <Datagrid rowClick="show">
-      <TextField source="firstname" label="Prénom" />
-      <TextField source="lastname" label="Nom" />
+      <TextField source="firstName" label="Prénom" />
+      <TextField source="lastName" label="Nom" />
       <TextField source="email" label="Email" />
       <TextField source="department" label="Département" />
       <NumberField

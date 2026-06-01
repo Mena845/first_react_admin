@@ -20,8 +20,8 @@ const EmployeeShowActions = () => (
 export const EmployeeShow = () => (
   <Show actions={<EmployeeShowActions />}>
     <SimpleShowLayout>
-      <TextField source="firstname" label="Prénom" />
-      <TextField source="lastname" label="Nom" />
+      <TextField source="firstName" label="Prénom" />
+      <TextField source="lastName" label="Nom" />
       <EmailField source="email" label="Email" />
       <TextField source="department" label="Département" />
       <NumberField

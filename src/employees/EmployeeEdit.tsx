@@ -22,7 +22,7 @@ const EmployeeTitle = () => {
   if (!record) return null;
   return (
     <span>
-      Modifier : {record.firstname} {record.lastname}
+      Modifier : {record.firstName} {record.lastName}
     </span>
   );
 };
@@ -30,8 +30,8 @@ const EmployeeTitle = () => {
 export const EmployeeEdit = () => (
   <Edit title={<EmployeeTitle />}>
     <SimpleForm>
-      <TextInput source="firstname" label="Prénom" validate={required()} />
-      <TextInput source="lastname" label="Nom" validate={required()} />
+      <TextInput source="firstName" label="Prénom" validate={required()} />
+      <TextInput source="lastName" label="Nom" validate={required()} />
       <TextInput
         source="email"
         label="Email"

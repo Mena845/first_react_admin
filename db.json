@@ -1,54 +1,61 @@
 {
-    "Employees": [
-        {
-           "id": 1,
-           "firstname": "Alice",
-           "lastname": "Martin",
-           "email": "alice@company.com",
-           "department": "Informatique",
-           "salary": 2800,
-           "active": true
-        },
-        {
-            "id": 2,
-            "firstname": "Bob",
-            "lastname": "Dupont",
-            "email": "bob@company.com",
-            "department": "Marketing",
-            "salary": 2500,
-            "active": true
-        },
-        {
-            "id": 3,
-            "firstname": "Clara",
-            "lastname": "Nguyen",
-            "email": "clara@company.com",
-            "department": "RH",
-            "salary": 2600,
-            "active": false 
-        }
-    ],
-
-    "Internes": [
-        {
-            "id": 1,
-            "firstname": "David",
-            "lastname": "Smith",
-            "email": "david@company.com",
-            "mentorId": 1,
-            "paid": true,
-            "salary": 1500
-        },
-        {
-            "id": 2,
-            "firstname": "Eva",
-            "lastname": "Johnson",
-            "email": "eva@company.com",
-            "mentorId": 3,
-            "paid": false,
-            "salary": 0
-        }
-    ]
+  "Employees": [
+    {
+      "id": 1,
+      "firstName": "Alice",
+      "lastName": "Martin",
+      "email": "alice@company.com",
+      "department": "Informatique",
+      "salary": 2800,
+      "active": true
+    },
+    {
+      "id": 2,
+      "firstName": "Bob",
+      "lastName": "Dupont",
+      "email": "bob@company.com",
+      "department": "Marketing",
+      "salary": 2500,
+      "active": true
+    },
+    {
+      "id": 3,
+      "firstName": "Clara",
+      "lastName": "Nguyen",
+      "email": "clara@company.com",
+      "department": "RH",
+      "salary": 2600,
+      "active": false
+    }
+  ],
+  "Internes": [
+    {
+      "id": 1,
+      "firstName": "David",
+      "lastName": "Smith",
+      "email": "david@company.com",
+      "mentorId": 1,
+      "paid": true,
+      "slary": 1500
+    },
+    {
+      "id": 2,
+      "firstName": "Eva",
+      "lastName": "Johnson",
+      "email": "eva@company.com",
+      "mentorId": 3,
+      "department": "Informatique",
+      "paid": false,
+      "salary": 0
+    },
+    {
+      "paid": false,
+      "firstName": "Tsila",
+      "lastName": "Tsikiniaina",
+      "email": "tsikiniainatsilavina@gmail.com",
+      "department": "Informatique",
+      "salary": 0,
+      "id": 3
+    }
+  ]
 }
-
-
