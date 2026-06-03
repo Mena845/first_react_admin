@@ -33,8 +33,8 @@ export const InterneCreate = () => (
         label="Email"
         validate={[required(), email()]}
       />
-      <ReferenceInput source="mentorId" reference="Employees" label="Mentor" filter={{"isActive":true}}>
-        <SelectInput optionText="firstName" validate={required()} />
+      <ReferenceInput source="mentorId" reference="Departments" label="Department">
+        <SelectInput optionText="name" validate={required()} />
       </ReferenceInput>
       <BooleanInput source="paid" label="Payé" validate={required()}/>
       <SalaryInput />
