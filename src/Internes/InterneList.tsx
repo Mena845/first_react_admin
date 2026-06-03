@@ -1,5 +1,5 @@
 
-import { BooleanField, DataTable, DateField, EditButton, EmailField, FunctionField, List, NumberField, RecordContext, ReferenceField, ReferenceInput, SelectInput, TextField, TextInput } from 'react-admin';
+import { BooleanField, DataTable, DateField, DeleteButton, EditButton, EmailField, FunctionField, List, NumberField, RecordContext, ReferenceField, ReferenceInput, SelectInput, TextField, TextInput } from 'react-admin';
 
 const internsFilters = [
     <TextInput label="search" source="q" alwaysOn/>,
@@ -38,6 +38,7 @@ export const InterneList = () => (
             </DataTable.Col>
         </DataTable>
           <EditButton />
+              <DeleteButton />
     </List>
    
 );

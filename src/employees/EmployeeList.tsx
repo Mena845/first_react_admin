@@ -13,6 +13,7 @@ import {
   ReferenceInput,
 } from "react-admin";
 
+
 const employeesFilters = [
     <TextInput label="search" source="q" alwaysOn/>,
     <ReferenceInput source="department" reference="Departments" label="Departments">
@@ -41,5 +42,7 @@ export const EmployeeList = () => (
       />
       <BooleanField source="isActive" label="Actif" />
     </Datagrid>
+    <EditButton />
+    <DeleteButton />
   </List>
 );
