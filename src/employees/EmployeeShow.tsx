@@ -1,44 +1,30 @@
 import {
-  Show,
-  SimpleShowLayout,
-  TextField,
-  NumberField,
-  BooleanField,
-  EmailField,
-  TopToolbar,
-  ListButton,
-  EditButton,
-  ReferenceField,
+  TopToolbar, ListButton, EditButton, TextField, EmailField,
+  NumberField, Show, SimpleShowLayout, BooleanField, DateField,
 } from "react-admin";
-import { DepartmentStats } from "../Componenst/DepartmentStats";
-import { InternsByManager } from "../Componenst/InternsByManager";
-import { EmployeesShowName } from "../Componenst/EmployeesShowName";
+import { ManagerCard } from "../Componenst/ManagerCard";
 
-const EmployeeShowActions = () => (
+const InterneShowActions = () => (
   <TopToolbar>
     <ListButton />
     <EditButton />
   </TopToolbar>
 );
 
-export const EmployeeShow = () => (
-  <Show actions={<EmployeeShowActions />} title={<EmployeesShowName />}>
+export const InterneShow = () => (
+  <Show actions={<InterneShowActions />}>
     <SimpleShowLayout>
       <TextField source="firstName" label="Prénom" />
       <TextField source="lastName" label="Nom" />
       <EmailField source="email" label="Email" />
-      <ReferenceField source="department" reference="Departments">
-        <TextField source="name" />
-      </ReferenceField>
+      <BooleanField source="paid" label="Payé" />
       <NumberField
         source="salary"
         label="Salaire"
         options={{ style: "currency", currency: "EUR" }}
       />
-      <BooleanField source="isActive" label="Actif" />
-            <DepartmentStats />
-      <InternsByManager />
-         <EditButton />
+      <DateField source="enterDate" label="Date d'Entrée" />
+      <ManagerCard />  {/* ← useRecordContext + useGetOne */}
     </SimpleShowLayout>
   </Show>
 );
