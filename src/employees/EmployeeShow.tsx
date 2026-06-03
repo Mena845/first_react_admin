@@ -10,6 +10,8 @@ import {
   EditButton,
   ReferenceField,
 } from "react-admin";
+import { DepartmentStats } from "../Componenst/DepartmentStats";
+import { InternsByManager } from "../Componenst/InternsByManager";
 
 const EmployeeShowActions = () => (
   <TopToolbar>
@@ -33,6 +35,8 @@ export const EmployeeShow = () => (
         options={{ style: "currency", currency: "EUR" }}
       />
       <BooleanField source="active" label="Actif" />
+            <DepartmentStats />
+      <InternsByManager />
          <EditButton />
     </SimpleShowLayout>
   </Show>
