@@ -1,8 +1,15 @@
 
-import { BooleanField, DataTable, DateField, EditButton, EmailField, FunctionField, List, NumberField, RecordContext, ReferenceField, TextField } from 'react-admin';
+import { BooleanField, DataTable, DateField, EditButton, EmailField, FunctionField, List, NumberField, RecordContext, ReferenceField, ReferenceInput, SelectInput, TextField, TextInput } from 'react-admin';
 
+const internsFilters = [
+    <TextInput label="search" source="q" alwaysOn/>,
+    <ReferenceInput source="mentorId" reference="Departments" label="Departments">
+           <SelectInput optionText="name"/>
+    </ReferenceInput>,
+     <TextInput label="Paid" source="paid" defaultValue="Paid" />
+];
 export const InterneList = () => (
-    <List>
+    <List filters={internsFilters}>
         <DataTable>
             <DataTable.Col source="id" />
             <DataTable.Col source="firstName" />
