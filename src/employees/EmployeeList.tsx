@@ -39,7 +39,7 @@ export const EmployeeList = () => (
         label="Salaire"
         options={{ style: "currency", currency: "EUR" }}
       />
-      <BooleanField source="active" label="Actif" />
+      <BooleanField source="isActive" label="Actif" />
     </Datagrid>
   </List>
 );
