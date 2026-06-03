@@ -36,9 +36,13 @@ export const InterneList = () => (
             <DataTable.Col source="salary">
                 <NumberField source="salary" />
             </DataTable.Col>
-        </DataTable>
-          <EditButton />
+             <DataTable.Col >
+             <EditButton />
+            </DataTable.Col>
+            <DataTable.Col >
               <DeleteButton />
+            </DataTable.Col>
+        </DataTable>
     </List>
    
 );
