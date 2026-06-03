@@ -1,10 +1,20 @@
-import {TopToolbar, ListButton, EditButton, TextField, EmailField, NumberField, ReferenceField, Show, SimpleShowLayout, BooleanField, DateField} from "react-admin";
+import {TopToolbar, ListButton, EditButton, TextField, EmailField, NumberField, ReferenceField, Show, SimpleShowLayout, BooleanField, DateField, useRecordContext} from "react-admin";
 const InterneShowActions = () => (
   <TopToolbar>
     <ListButton />
     <EditButton />
   </TopToolbar>
 );
+
+const MentorFullName = () => {
+  const record = useRecordContext();
+  if (!record) return null;
+  return (
+    <span>
+      {record.firstName} {record.lastName}
+    </span>
+  );
+};
 
 export const InterneShow = () => (
   <Show actions={<InterneShowActions />}>
@@ -13,11 +23,10 @@ export const InterneShow = () => (
       <TextField source="lastName" label="Nom" />
       <EmailField source="email" label="Email" />
       <ReferenceField source="mentorId" reference="Employees">
-        <TextField source="mentorID" label="Mentor Prénom"/>
-        <TextField source="lastName" label="Mentor Nom"/>
+        <MentorFullName />
       </ReferenceField>
       <ReferenceField source='mentorId' reference='Departments'>
-        <TextField source='name' label='Département'/>
+        <TextField source='name' label='Department'/>
       </ReferenceField>
       <BooleanField source="paid" label="Payé" />
       <NumberField
