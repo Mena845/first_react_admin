@@ -1,7 +1,6 @@
 import {
     useRecordContext,
     useGetList,
-    Link,
 } from "react-admin";
 
 export const InternsByManager = () => {

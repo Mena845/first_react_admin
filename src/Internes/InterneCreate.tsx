@@ -2,10 +2,8 @@ import {
   Create,
   SimpleForm,
   TextInput,
-  NumberInput,
   SelectInput,
   required,
-  minValue,
   email,
   ReferenceInput,
   DateInput,
@@ -13,8 +11,6 @@ import {
 } from "react-admin";
 import { SalaryInput  } from "../Componenst/SalaryInput";
 import { MentorInput } from "../Componenst/MentorInput";
-
-
 
 
 export const InterneCreate = () => (
