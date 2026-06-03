@@ -10,8 +10,9 @@ import {
   SelectInput,
   ReferenceField,
   TextInput,
-  ReferenceInput,
+  ReferenceInput
 } from "react-admin";
+
 
 
 const employeesFilters = [
@@ -24,6 +25,7 @@ const employeesFilters = [
         { id: false, name: 'No' },
     ]} />
 ];
+
 
 export const EmployeeList = () => (
   <List filters={employeesFilters} perPage={5}>
