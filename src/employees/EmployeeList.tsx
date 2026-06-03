@@ -7,9 +7,10 @@ import {
   EditButton,
   DeleteButton,
   ReferenceField,
+  DataTable,
 } from "react-admin";
 import { employeesFilters } from "../Componenst/employeesFilters";
-
+import { QuickStatusToggle } from "../Componenst/QuickStatusToggle";
 
 
 export const EmployeeList = () => (
@@ -29,6 +30,9 @@ export const EmployeeList = () => (
       />
       <BooleanField source="isActive" label="Actif" />
     </Datagrid>
+    <DataTable.Col label="Action">
+    <QuickStatusToggle />
+</DataTable.Col>
     <EditButton />
     <DeleteButton />
   </List>

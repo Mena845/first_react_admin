@@ -43,20 +43,11 @@ export const InternsByManager = () => {
             {interns?.map((intern) => (
                 <div
                     key={intern.id}
-                    style={{
-                        borderBottom: "1px solid #ddd",
-                        padding: "8px 0",
-                    }}
                 >
-                    <div>
-                        {intern.firstName} {intern.lastName}
-                    </div>
-
-                    <div>{intern.email}</div>
-
                     <a href={`#/Internes/${intern.id}/show`}>
-                        Voir la fiche
-                    </a>
+                        {intern.firstName} {intern.lastName}
+                    </ a>
+
                 </div>
             ))}
         </div>
