@@ -8,19 +8,10 @@ import {
   required,
   minValue,
   email,
-  useRecordContext,
     ReferenceInput,
 } from "react-admin";
+import { EmployeeTitle } from "../Componenst/EmployeeTitle";
 
-const EmployeeTitle = () => {
-  const record = useRecordContext();
-  if (!record) return null;
-  return (
-    <span>
-      Modifier : {record.firstName} {record.lastName}
-    </span>
-  );
-};
 
 export const EmployeeEdit = () => (
   <Edit title={<EmployeeTitle />}>

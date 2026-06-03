@@ -11,8 +11,8 @@ import {
   DateInput,
   BooleanInput,
 } from "react-admin";
-import { SalaryInput  } from "./Componenst/SalaryInput";
-import { MentorInput } from "./Componenst/MentorInput";
+import { SalaryInput  } from "../Componenst/SalaryInput";
+import { MentorInput } from "../Componenst/MentorInput";
 
 
 
