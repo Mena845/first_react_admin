@@ -10,8 +10,8 @@ export const QuickStatusToggle = () => {
   const handleClick = () => {
     update("Employees", {
       id: record.id,
-      data: { isActive: !record.isActive },  // ✅ seulement le champ qui change
-      previousData: record,                   // ✅ obligatoire pour l'optimistic update
+      data: { isActive: !record.isActive }, 
+      previousData: record,                  
     });
   };
 
