@@ -34,7 +34,7 @@ export const InterneList = () => (
                 <BooleanField source="paid" />
             </DataTable.Col>
             <DataTable.Col source="salary">
-                <NumberField source="salary" />
+                <NumberField source="salary" options={{ style: 'currency', currency: 'EUR' }} />
             </DataTable.Col>
              <DataTable.Col >
              <EditButton />
