@@ -11,40 +11,11 @@ import {
   DateInput,
   BooleanInput,
 } from "react-admin";
-import { useWatch } from "react-hook-form";
-export const SalaryInput = () => {
-  const paid = useWatch({
-    name: "paid",
-  });
-  if(!paid) return null;
-  return (
-    <NumberInput source="salary" label="Salaire" validate={[required(), minValue(0)]} />
-  );
-}
+import { SalaryInput  } from "./Componenst/SalaryInput";
+import { MentorInput } from "./Componenst/MentorInput";
 
-export const MentorInput = () => {
-    const department = useWatch({
-        name: "department",
-    });
 
-    return (
-        <ReferenceInput
-            source="mentorId"
-            reference="Employees"
-            filter={{
-                department,
-                isActive: true,
-            }}
-        >
-            <SelectInput
-                optionText={(record) =>
-                    `${record.firstName} ${record.lastName}`
-                }
-                validate={required()}
-            />
-        </ReferenceInput>
-    );
-};
+
 
 export const InterneCreate = () => (
   <Create redirect="list">

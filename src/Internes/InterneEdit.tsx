@@ -10,17 +10,9 @@ import {
     BooleanInput,
     DateInput
 } from "react-admin";
-import { SalaryInput, MentorInput } from "./InterneCreate";
-
-const InternTitle = () => {
-    const record = useRecordContext();
-
-    return record ? (
-        <span>
-            Modifier : {record.firstName} {record.lastName}
-        </span>
-    ) : null;
-};
+import { SalaryInput } from "./Componenst/SalaryInput";
+import { MentorInput } from "./Componenst/MentorInput";
+import {InternTitle} from "./Componenst/InternTitle";
 
 export const InternEdit = () => (
     <Edit title={<InternTitle />} redirect="list">
