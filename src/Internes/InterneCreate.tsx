@@ -9,9 +9,19 @@ import {
   email,
   ReferenceInput,
   DateInput,
-  FormDataConsumer,
-  BooleanInput
+  BooleanInput,
+  ReferenceField,
 } from "react-admin";
+import { useWatch } from "react-hook-form";
+const SalaryInput = () => {
+  const paid = useWatch({
+    name: "paid",
+  });
+  if(!paid) return null;
+  return (
+    <NumberInput source="salary" label="Salaire" validate={[required(), minValue(0)]} />
+  );
+}
 
 export const InterneCreate = () => (
   <Create redirect="list">
@@ -27,12 +37,7 @@ export const InterneCreate = () => (
         <SelectInput optionText="firstName" validate={required()} />
       </ReferenceInput>
       <BooleanInput source="paid" label="Payé" validate={required()}/>
-      <FormDataConsumer>
-        {({formData})=>
-        formData.paid ?(
-          <NumberInput source="salary" label="Salaire" validate={[required(), minValue(0)]} />
-        ): null
-        }</FormDataConsumer>
+      <SalaryInput />
       <DateInput
       source="enterDate" label="Date d'Entrée"/>
     </SimpleForm>
