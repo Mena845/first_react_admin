@@ -13,7 +13,7 @@ export const InterneShow = () => (
       <TextField source="lastName" label="Nom" />
       <EmailField source="email" label="Email" />
       <ReferenceField source="mentorId" reference="Employees">
-        <TextField source="firstName" label="Mentor Prénom"/>
+        <TextField source="mentorID" label="Mentor Prénom"/>
         <TextField source="lastName" label="Mentor Nom"/>
       </ReferenceField>
       <ReferenceField source='mentorId' reference='Departments'>

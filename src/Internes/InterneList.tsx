@@ -21,7 +21,7 @@ export const InterneList = () => (
                 <EmailField source="email" />
             </DataTable.Col>
             <DataTable.Col source="mentorId">
-                <ReferenceField source="mentorId" reference="Employees">
+                <ReferenceField source="mentorId" reference="Employees" link="show">
                     <FunctionField render={(record) => `${record.firstName} ${record.lastName}`} />
                 </ReferenceField>
             </DataTable.Col>
