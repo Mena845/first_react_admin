@@ -12,7 +12,7 @@ import {
   BooleanInput,
 } from "react-admin";
 import { useWatch } from "react-hook-form";
-const SalaryInput = () => {
+export const SalaryInput = () => {
   const paid = useWatch({
     name: "paid",
   });
@@ -22,7 +22,7 @@ const SalaryInput = () => {
   );
 }
 
-const MentorInput = () => {
+export const MentorInput = () => {
     const department = useWatch({
         name: "department",
     });
