@@ -12,6 +12,7 @@ import {
 } from "react-admin";
 import { DepartmentStats } from "../Componenst/DepartmentStats";
 import { InternsByManager } from "../Componenst/InternsByManager";
+import { EmployeesShowName } from "../Componenst/EmployeesShowName";
 
 const EmployeeShowActions = () => (
   <TopToolbar>
@@ -21,7 +22,7 @@ const EmployeeShowActions = () => (
 );
 
 export const EmployeeShow = () => (
-  <Show actions={<EmployeeShowActions />}>
+  <Show actions={<EmployeeShowActions />} title={<EmployeesShowName />}>
     <SimpleShowLayout>
       <TextField source="firstName" label="Prénom" />
       <TextField source="lastName" label="Nom" />
@@ -34,7 +35,7 @@ export const EmployeeShow = () => (
         label="Salaire"
         options={{ style: "currency", currency: "EUR" }}
       />
-      <BooleanField source="active" label="Actif" />
+      <BooleanField source="isActive" label="Actif" />
             <DepartmentStats />
       <InternsByManager />
          <EditButton />

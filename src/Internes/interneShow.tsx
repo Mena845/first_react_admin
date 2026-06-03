@@ -1,4 +1,5 @@
 import {TopToolbar, ListButton, EditButton, TextField, EmailField, NumberField, ReferenceField, Show, SimpleShowLayout, BooleanField, DateField, useRecordContext} from "react-admin";
+import { InternShowName } from "../Componenst/InternShowName";
 const InterneShowActions = () => (
   <TopToolbar>
     <ListButton />
@@ -17,7 +18,7 @@ const MentorFullName = () => {
 };
 
 export const InterneShow = () => (
-  <Show actions={<InterneShowActions />}>
+  <Show actions={<InterneShowActions />} title={<InternShowName />}>
     <SimpleShowLayout>
       <TextField source="firstName" label="Prénom" />
       <TextField source="lastName" label="Nom" />
