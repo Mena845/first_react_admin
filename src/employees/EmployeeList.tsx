@@ -9,22 +9,23 @@ import {
   SearchInput,
   SelectInput,
   ReferenceField,
+  TextInput,
+  ReferenceInput,
 } from "react-admin";
 
-const EmployeeFilter = [
-  <SearchInput source="q" alwaysOn />,
-  <SelectInput
-    source="isPermanent"
-    choices={[
-      { id: "Informatiquq", name: "Informatique" },
-      { id: "Marketing", name: "Marketing" },
-      { id: "RH", name: "RH" },
-    ]}
-  />,
+const employeesFilters = [
+    <TextInput label="search" source="q" alwaysOn/>,
+    <ReferenceInput source="department" reference="Departments" label="Departments">
+           <SelectInput optionText="name"/>
+    </ReferenceInput>,
+    <SelectInput source="active" label="Actif" choices={[
+        { id: true, name: 'Yes' },
+        { id: false, name: 'No' },
+    ]} />
 ];
 
 export const EmployeeList = () => (
-  <List filters={EmployeeFilter} perPage={5}>
+  <List filters={employeesFilters} perPage={5}>
     <Datagrid rowClick="show">
       <TextField source="firstName" label="Prénom" />
       <TextField source="lastName" label="Nom" />
