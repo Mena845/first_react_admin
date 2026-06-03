@@ -6,7 +6,10 @@ const internsFilters = [
     <ReferenceInput source="mentorId" reference="Departments" label="Departments">
            <SelectInput optionText="name"/>
     </ReferenceInput>,
-     <TextInput label="Paid" source="paid" defaultValue="Paid" />
+    <SelectInput source="paid" label="Payé" choices={[
+        { id: true, name: 'Yes' },
+        { id: false, name: 'No' },
+    ]} />
 ];
 export const InterneList = () => (
     <List filters={internsFilters}>
