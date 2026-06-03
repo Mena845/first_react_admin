@@ -1,41 +1,28 @@
 import Button from "@mui/material/Button";
-import {
-    useRecordContext,
-    useUpdate,
-} from "react-admin";
+import { useRecordContext, useUpdate } from "react-admin";
 
 export const QuickStatusToggle = () => {
-    const record = useRecordContext();
+  const record = useRecordContext();
+  const [update, { isPending }] = useUpdate();
 
-    const [update, { isPending }] = useUpdate();
+  if (!record) return null;
 
-    if (!record) return null;
+  const handleClick = () => {
+    update("Employees", {
+      id: record.id,
+      data: { isActive: !record.isActive },  // ✅ seulement le champ qui change
+      previousData: record,                   // ✅ obligatoire pour l'optimistic update
+    });
+  };
 
-    const handleClick = () => {
-        update("Employees", {
-            id: record.id,
-            data: {
-                ...record,
-                isActive: !record.isActive,
-            },
-            previousData: record,
-        });
-    };
-
-    return (
-        <Button
-            variant="contained"
-            color={
-                record.isActive
-                    ? "error"
-                    : "success"
-            }
-            onClick={handleClick}
-            disabled={isPending}
-        >
-            {record.isActive
-                ? "Désactiver"
-                : "Activer"}
-        </Button>
-    );
+  return (
+    <Button
+      variant="contained"
+      color={record.isActive ? "error" : "success"}
+      onClick={handleClick}
+      disabled={isPending}
+    >
+      {record.isActive ? "Désactiver" : "Activer"}
+    </Button>
+  );
 };
