@@ -1,4 +1,3 @@
-// src/Dashboard.tsx
 import { useGetList } from "react-admin";
 import { Card, CardContent, Typography, Box, Grid } from "@mui/material";
 import PeopleIcon from "@mui/icons-material/People";

@@ -24,7 +24,7 @@ export const InterneShow = () => (
         options={{ style: "currency", currency: "EUR" }}
       />
       <DateField source="enterDate" label="Date d'Entrée" />
-      <ManagerCard />  {/* ← useRecordContext + useGetOne */}
+      <ManagerCard /> 
     </SimpleShowLayout>
   </Show>
 );

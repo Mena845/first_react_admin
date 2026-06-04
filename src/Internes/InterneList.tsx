@@ -47,9 +47,11 @@ export const InterneList = () => (
         </ReferenceField>
       </DataTable.Col>
       <DataTable.Col label="Département">
-        <ReferenceField source="mentorId" reference="Departments">
-          <TextField source="name" />
-        </ReferenceField>
+        <ReferenceField source="mentorId" reference="Employees" link={false}>
+  <ReferenceField source="department" reference="Departments" link={false}>
+    <TextField source="name" />
+  </ReferenceField>
+</ReferenceField>
       </DataTable.Col>
       <DataTable.Col source="paid" label="Payé">
         <BooleanField source="paid" />
