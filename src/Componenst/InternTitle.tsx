@@ -1,7 +1,7 @@
 import { useRecordContext } from "react-admin";
 
 export const InternTitle = () => {
-  const record = useRecordContext(); // ← obligatoire
+  const record = useRecordContext(); 
   if (!record) return null;
   return (
     <span>

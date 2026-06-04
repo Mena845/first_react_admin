@@ -37,7 +37,6 @@ export const QuickAddInternModal = () => {
   };
 
   const handleSubmit = () => {
-    // Validation minimale
     if (!firstName.trim() || !lastName.trim()) {
       setFormError("Le prénom et le nom sont obligatoires.");
       return;

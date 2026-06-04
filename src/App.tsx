@@ -1,4 +1,3 @@
-// src/App.tsx
 import { Admin, Resource } from "react-admin";
 import { Layout } from "./Layout";
 import jsonServerProvider from "ra-data-json-server";
