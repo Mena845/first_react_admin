@@ -2,15 +2,16 @@ import {
   Create,
   SimpleForm,
   TextInput,
-  NumberInput,
   SelectInput,
-  BooleanInput,
   required,
-  minValue,
   email,
   ReferenceInput,
   DateInput,
+  BooleanInput,
 } from "react-admin";
+import { SalaryInput  } from "../Componenst/SalaryInput";
+import { MentorInput } from "../Componenst/MentorInput";
+
 
 export const InterneCreate = () => (
   <Create redirect="list">
@@ -22,17 +23,20 @@ export const InterneCreate = () => (
         label="Email"
         validate={[required(), email()]}
       />
-      <ReferenceInput source="mentorId" reference="Employees" label="Mentor">
-        <SelectInput optionText="firstName" validate={required()} />
-      </ReferenceInput>
-      
-      <BooleanInput source="paid" label="Payé" 
-      validate={required()}/>
-      <NumberInput
-        source="salary"
-        label="Salaire"
-        validate={[required(), minValue(0)]}
-      />
+      <ReferenceInput
+    source="department"
+    reference="Departments"
+    label="Département"
+>
+    <SelectInput
+        optionText="name"
+        validate={required()}
+    />
+</ReferenceInput>
+
+      <MentorInput />
+      <BooleanInput source="paid" label="Payé" validate={required()}/>
+      <SalaryInput />
       <DateInput
       source="enterDate" label="Date d'Entrée"/>
     </SimpleForm>

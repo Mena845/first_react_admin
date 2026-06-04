@@ -25,10 +25,10 @@ export const EmployeeCreate = () => (
         <SelectInput optionText="name" />
       </ReferenceInput>
       <NumberInput
-        source="salary"
-        label="Salaire"
-        validate={[required(), minValue(0)]}
-      />
+  source="salary"
+  label="Salaire"
+  validate={[required(), minValue(1500, "Le salaire minimum est de 1400 €")]}
+/>
       <BooleanInput source="isActive" label="Actif" defaultValue={true} />
     </SimpleForm>
   </Create>

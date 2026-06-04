@@ -1,0 +1,54 @@
+import {
+    useRecordContext,
+    useGetList,
+} from "react-admin";
+
+export const InternsByManager = () => {
+    const employee = useRecordContext();
+
+    const {
+        data: interns,
+        total,
+        isPending,
+        error,
+    } = useGetList("Internes", {
+        filter: {
+            mentorId: employee?.id,
+        },
+        pagination: {
+            page: 1,
+            perPage: 100,
+        },
+    });
+
+    if (!employee) return null;
+
+    if (isPending) {
+        return <p>Chargement des stagiaires...</p>;
+    }
+
+    if (error) {
+        return <p>Erreur lors du chargement.</p>;
+    }
+
+    return (
+        <div>
+            <h3>Stagiaires encadrés ({total})</h3>
+
+            {interns?.length === 0 && (
+                <p>Aucun stagiaire encadré.</p>
+            )}
+
+            {interns?.map((intern) => (
+                <div
+                    key={intern.id}
+                >
+                    <a href={`#/Internes/${intern.id}/show`}>
+                        {intern.firstName} {intern.lastName}
+                    </ a>
+
+                </div>
+            ))}
+        </div>
+    );
+};

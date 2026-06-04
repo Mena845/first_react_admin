@@ -6,39 +6,29 @@ import {
   BooleanField,
   EditButton,
   DeleteButton,
-  SearchInput,
-  SelectInput,
   ReferenceField,
 } from "react-admin";
-
-const EmployeeFilter = [
-  <SearchInput source="q" alwaysOn />,
-  <SelectInput
-    source="isPermanent"
-    choices={[
-      { id: "Informatiquq", name: "Informatique" },
-      { id: "Marketing", name: "Marketing" },
-      { id: "RH", name: "RH" },
-    ]}
-  />,
-];
+import { employeesFilters } from "../Componenst/employeesFilters";
+import { QuickStatusToggle } from "../Componenst/QuickStatusToggle";
 
 export const EmployeeList = () => (
-  <List filters={EmployeeFilter} perPage={5}>
+  <List filters={employeesFilters} perPage={5}>
     <Datagrid rowClick="show">
       <TextField source="firstName" label="Prénom" />
       <TextField source="lastName" label="Nom" />
       <TextField source="email" label="Email" />
-        <ReferenceField source="department" reference="Departments">
+      <ReferenceField source="department" reference="Departments">
         <TextField source="name" />
       </ReferenceField>
-    
       <NumberField
         source="salary"
         label="Salaire"
         options={{ style: "currency", currency: "EUR" }}
       />
-      <BooleanField source="active" label="Actif" />
+      <BooleanField source="isActive" label="Actif" />
+      <QuickStatusToggle />
+      <EditButton />
+      <DeleteButton />
     </Datagrid>
   </List>
 );
