@@ -33,7 +33,7 @@ const StatCard = ({
     }}
     onClick={onClick}
   >
-    <CardContent>
+    <CardContent >
       <Box display="flex" alignItems="center"  gap={2} mb={1}>
         <Box sx={{ color }}>{icon}</Box>
         <Typography variant="subtitle2" color="text.secondary">
