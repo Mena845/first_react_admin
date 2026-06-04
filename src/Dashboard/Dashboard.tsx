@@ -24,21 +24,23 @@ const StatCard = ({
   <Card
     sx={{
       height: "100%",
+      minHeight: 150,
+      minWidth: 200,
       cursor: "pointer",
       transition: "box-shadow 0.2s",
       "&:hover": { boxShadow: 6 },
-      bgcolor: bgcolor ,  
+      bgcolor,  
     }}
     onClick={onClick}
   >
     <CardContent>
-      <Box display="flex" alignItems="center" gap={2} mb={1}>
+      <Box display="flex" alignItems="center"  gap={2} mb={1}>
         <Box sx={{ color }}>{icon}</Box>
         <Typography variant="subtitle2" color="text.secondary">
           {title}
         </Typography>
       </Box>
-      <Typography variant="h3" fontWeight="bold" sx={{ color }}>
+      <Typography variant="h3" textAlign="center" fontWeight="bold" sx={{ color }}>
         {value ?? "…"}
       </Typography>
     </CardContent>
@@ -72,7 +74,7 @@ export const Dashboard = () => {
         Dashboard
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3} sx={{ minHeight: 160 , minWidth: 260}}>
           <StatCard
             title="Total employés"
             value={totalEmployees}
@@ -81,7 +83,7 @@ export const Dashboard = () => {
             onClick={() => navigate("/Employees")}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3} sx={{ minHeight: 160 , minWidth: 260}}>
           <StatCard
             title="Employés actifs"
             value={activeEmployees}
@@ -90,16 +92,16 @@ export const Dashboard = () => {
             onClick={() => navigate("/Employees?filter=%7B%22isActive%22%3Atrue%7D")}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3} sx={{ minHeight: 160 , minWidth: 260}}>
           <StatCard
             title="Total stagiaires"
             value={totalInterns}
             icon={<SchoolIcon fontSize="large" />}
-            color="#ed6c02" bgcolor="#fff3e0"
+            color="#ed6c02" bgcolor="#fff3e0" 
             onClick={() => navigate("/Internes")}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3} sx={{ minHeight: 160 , minWidth: 260}}>
           <StatCard
             title="Stagiaires rémunérés"
             value={paidInterns}
