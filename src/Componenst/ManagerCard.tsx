@@ -1,24 +1,20 @@
-// src/Componenst/ManagerCard.tsx
 import { useRecordContext, useGetOne } from "react-admin";
 import { Card, CardContent, Typography, Box, CircularProgress, Alert } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
+import { useNavigate } from "react-router-dom"; 
 
 export const ManagerCard = () => {
-  const record = useRecordContext(); // ← récupère le stagiaire courant
+  const record = useRecordContext();
+  const navigate = useNavigate();  
 
-  const {
-    data: manager,
-    isPending,
-    error,
-  } = useGetOne(
+  const { data: manager, isPending, error } = useGetOne(
     "Employees",
     { id: record?.mentorId },
-    { enabled: !!record?.mentorId } // ← n'appelle pas l'API si pas de mentorId
+    { enabled: !!record?.mentorId }
   );
 
   if (!record) return null;
 
-  // État 1 : chargement
   if (isPending) {
     return (
       <Box display="flex" alignItems="center" gap={1} mt={2}>
@@ -28,7 +24,6 @@ export const ManagerCard = () => {
     );
   }
 
-  // État 2 : erreur
   if (error) {
     return (
       <Alert severity="error" sx={{ mt: 2 }}>
@@ -37,7 +32,6 @@ export const ManagerCard = () => {
     );
   }
 
-  // État 3 : données
   if (!manager) {
     return (
       <Alert severity="info" sx={{ mt: 2 }}>
@@ -47,7 +41,17 @@ export const ManagerCard = () => {
   }
 
   return (
-    <Card variant="outlined" sx={{ mt: 2, maxWidth: 300 }}>
+    <Card
+      variant="outlined"
+      sx={{
+        mt: 2,
+        maxWidth: 300,
+        border: "2px solid #1976d2",
+        cursor: "pointer",                  
+        "&:hover": { boxShadow: 4 },        
+      }}
+      onClick={() => navigate(`/Employees/${manager.id}/show`)}  
+    >
       <CardContent>
         <Box display="flex" alignItems="center" gap={1} mb={1}>
           <PersonIcon color="primary" />

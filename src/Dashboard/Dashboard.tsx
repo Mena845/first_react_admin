@@ -12,7 +12,6 @@ const StatCard = ({
   icon,
   color,
   onClick,
-  bgcolor,
 }: {
   title: string;
   value: number | undefined;
