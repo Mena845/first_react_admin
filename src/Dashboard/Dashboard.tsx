@@ -29,7 +29,7 @@ const StatCard = ({
       cursor: "pointer",
       transition: "box-shadow 0.2s",
       "&:hover": { boxShadow: 6 },
-      bgcolor,  
+      border: `2px solid ${color}`, 
     }}
     onClick={onClick}
   >
