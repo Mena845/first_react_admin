@@ -12,11 +12,13 @@ const StatCard = ({
   icon,
   color,
   onClick,
+  bgcolor,
 }: {
   title: string;
   value: number | undefined;
   icon: React.ReactNode;
   color: string;
+  bgcolor: string;
   onClick: () => void;
 }) => (
   <Card
@@ -25,6 +27,7 @@ const StatCard = ({
       cursor: "pointer",
       transition: "box-shadow 0.2s",
       "&:hover": { boxShadow: 6 },
+      bgcolor: bgcolor ,  
     }}
     onClick={onClick}
   >
@@ -74,7 +77,7 @@ export const Dashboard = () => {
             title="Total employés"
             value={totalEmployees}
             icon={<PeopleIcon fontSize="large" />}
-            color="#1976d2"
+            color="#1976d2" bgcolor="#e3f2fd"
             onClick={() => navigate("/Employees")}
           />
         </Grid>
@@ -83,7 +86,7 @@ export const Dashboard = () => {
             title="Employés actifs"
             value={activeEmployees}
             icon={<CheckCircleIcon fontSize="large" />}
-            color="#2e7d32"
+            color="#2e7d32" bgcolor="#e8f5e9"
             onClick={() => navigate("/Employees?filter=%7B%22isActive%22%3Atrue%7D")}
           />
         </Grid>
@@ -92,7 +95,7 @@ export const Dashboard = () => {
             title="Total stagiaires"
             value={totalInterns}
             icon={<SchoolIcon fontSize="large" />}
-            color="#ed6c02"
+            color="#ed6c02" bgcolor="#fff3e0"
             onClick={() => navigate("/Internes")}
           />
         </Grid>
@@ -101,7 +104,7 @@ export const Dashboard = () => {
             title="Stagiaires rémunérés"
             value={paidInterns}
             icon={<PaidIcon fontSize="large" />}
-            color="#9c27b0"
+            color="#9c27b0" bgcolor="#f3e5f5"
             onClick={() => navigate("/Internes?filter=%7B%22paid%22%3Atrue%7D")}
           />
         </Grid>
