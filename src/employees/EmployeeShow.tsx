@@ -10,9 +10,9 @@ import {
   EditButton,
   ReferenceField,
 } from "react-admin";
-import { DepartmentStats } from "../Componenst/DepartmentStats";
-import { InternsByManager } from "../Componenst/InternsByManager";
-import { EmployeesShowName } from "../Componenst/EmployeesShowName";
+import { DepartmentStats } from "../Components/DepartmentStats";
+import { InternsByManager } from "../Components/InternsByManager";
+import { EmployeesShowName } from "../Components/EmployeesShowName";
 
 const EmployeeShowActions = () => (
   <TopToolbar>

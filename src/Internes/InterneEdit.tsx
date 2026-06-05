@@ -9,9 +9,9 @@ import {
     BooleanInput,
     DateInput
 } from "react-admin";
-import { SalaryInput } from "../Componenst/SalaryInput";
-import { MentorInput } from "../Componenst/MentorInput";
-import {InternTitle} from "../Componenst/InternTitle";
+import { SalaryInput } from "../Components/SalaryInput";
+import { MentorInput } from "../Components/MentorInput";
+import {InternTitle} from "../Components/InternTitle";
 
 export const InternEdit = () => (
     <Edit title={<InternTitle />} redirect="list">

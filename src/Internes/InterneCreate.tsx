@@ -9,8 +9,8 @@ import {
   DateInput,
   BooleanInput,
 } from "react-admin";
-import { SalaryInput  } from "../Componenst/SalaryInput";
-import { MentorInput } from "../Componenst/MentorInput";
+import { SalaryInput  } from "../Components/SalaryInput";
+import { MentorInput } from "../Components/MentorInput";
 
 
 export const InterneCreate = () => (

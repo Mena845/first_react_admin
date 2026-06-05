@@ -12,7 +12,7 @@ import {
   TextInput,
   TopToolbar,
 } from "react-admin";
-import { QuickAddInternModal } from "../Componenst/QuickAddInternModal";
+import { QuickAddInternModal } from "../Components/QuickAddInternModal";
 
 const internsFilters = [
   <TextInput label="Recherche" source="q" alwaysOn />,

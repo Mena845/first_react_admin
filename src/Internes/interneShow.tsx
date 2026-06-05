@@ -2,7 +2,7 @@ import {
   TopToolbar, ListButton, EditButton, TextField, EmailField,
   NumberField, Show, SimpleShowLayout, BooleanField, DateField,
 } from "react-admin";
-import { ManagerCard } from "../Componenst/ManagerCard";
+import { ManagerCard } from "../Components/ManagerCard";
 
 const InterneShowActions = () => (
   <TopToolbar>

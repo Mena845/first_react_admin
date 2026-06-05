@@ -8,8 +8,8 @@ import {
   DeleteButton,
   ReferenceField,
 } from "react-admin";
-import { employeesFilters } from "../Componenst/employeesFilters";
-import { QuickStatusToggle } from "../Componenst/QuickStatusToggle";
+import { employeesFilters } from "../Components/employeesFilters";
+import { QuickStatusToggle } from "../Components/QuickStatusToggle";
 
 export const EmployeeList = () => (
   <List filters={employeesFilters} perPage={5}>

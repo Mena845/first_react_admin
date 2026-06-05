@@ -10,7 +10,7 @@ import {
   email,
     ReferenceInput,
 } from "react-admin";
-import { EmployeeTitle } from "../Componenst/EmployeeTitle";
+import { EmployeeTitle } from "../Components/EmployeeTitle";
 
 
 export const EmployeeEdit = () => (
