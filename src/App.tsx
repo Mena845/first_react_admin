@@ -1,6 +1,7 @@
 import { Admin, EditGuesser, Resource } from "react-admin";
 import { Layout } from "./Layout";
 import jsonServerProvider from "ra-data-json-server";
+import { Dashboard } from "./Dashboard";
 import { EmployeeList } from "./employees/EmployeeList";
 import { EmployeeEdit } from "./employees/EmployeeEdit";
 import { EmployeeShow } from "./employees/EmployeeShow";
@@ -12,7 +13,7 @@ import { InternShow } from "./interns/InternShow";
 const dataProvider = jsonServerProvider("http://localhost:3002");
 
 export const App = () => (
-  <Admin layout={Layout} dataProvider={dataProvider}>
+  <Admin dashboard={Dashboard} layout={Layout} dataProvider={dataProvider}>
     <Resource
       name="employees"
       list={EmployeeList}
