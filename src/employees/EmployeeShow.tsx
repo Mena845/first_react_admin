@@ -12,19 +12,8 @@ import {
   useRecordContext,
   useGetList,
 } from "react-admin";
-import {
-  Chip,
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { Chip, Box, Card, CardContent, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const EmployeeShowActions = () => (
   <TopToolbar>
@@ -43,52 +32,28 @@ const SupervisedInterns = () => {
 
   if (!interns.length) return null;
 
-  const formatCurrency = (amount: number) =>
-    new Intl.NumberFormat("fr-FR", {
-      style: "currency",
-      currency: "EUR",
-    }).format(amount);
-
   return (
     <Card sx={{ mt: 3 }}>
       <CardContent>
         <Typography variant="h6" gutterBottom>
           Stagiaires encadrés ({interns.length})
         </Typography>
-        <TableContainer>
-          <Table size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell sx={{ fontWeight: 700 }}>Prénom</TableCell>
-                <TableCell sx={{ fontWeight: 700 }}>Nom</TableCell>
-                <TableCell sx={{ fontWeight: 700 }}>Email</TableCell>
-                <TableCell sx={{ fontWeight: 700 }}>Salaire</TableCell>
-                <TableCell sx={{ fontWeight: 700 }}>Payé</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {interns.map((intern) => (
-                <TableRow key={intern.id}>
-                  <TableCell>{intern.firstName}</TableCell>
-                  <TableCell>{intern.lastName}</TableCell>
-                  <TableCell>{intern.email}</TableCell>
-                  <TableCell>
-                    {intern.salary != null
-                      ? formatCurrency(intern.salary)
-                      : "-"}
-                  </TableCell>
-                  <TableCell>
-                    <Chip
-                      label={intern.paid ? "Oui" : "Non"}
-                      color={intern.paid ? "success" : "default"}
-                      size="small"
-                    />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+          {interns.map((intern) => (
+            <Typography
+              key={intern.id}
+              component={Link}
+              to={`/interns/${intern.id}/show`}
+              sx={{
+                color: "primary.main",
+                textDecoration: "none",
+                "&:hover": { textDecoration: "underline" },
+              }}
+            >
+              {intern.firstName} {intern.lastName}
+            </Typography>
+          ))}
+        </Box>
       </CardContent>
     </Card>
   );
