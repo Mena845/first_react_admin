@@ -11,7 +11,14 @@ import {
 import { Chip } from "@mui/material";
 
 const EmployeeFilter = [
-  <SearchInput source="q" alwaysOn key="search" />,
+  <SearchInput
+    source="q"
+    alwaysOn
+    key="search"
+    sx={{
+      "& .MuiInputBase-root": { backgroundColor: "#f5f9ff", borderRadius: 3 },
+    }}
+  />,
   <SelectInput
     source="department"
     choices={[
@@ -20,6 +27,13 @@ const EmployeeFilter = [
       { id: "3", name: "RH" },
     ]}
     key="department"
+    sx={{
+      "& .MuiInputBase-root": {
+        backgroundColor: "#f5f9ff",
+        borderRadius: 3,
+        minWidth: 160,
+      },
+    }}
   />,
 ];
 
@@ -33,7 +47,19 @@ const ActiveChip = ({ record }: { record: { isActive: boolean } }) => (
 );
 
 export const EmployeeList = () => (
-  <List filters={EmployeeFilter} perPage={5}>
+  <List
+    filters={EmployeeFilter}
+    perPage={5}
+    sx={{
+      "& .RaList-actions": {
+        backgroundColor: "#f8fbff",
+        borderRadius: 3,
+        p: 2,
+        mb: 1,
+      },
+      "& .RaList-main": { borderRadius: 3 },
+    }}
+  >
     <Datagrid
       rowClick="show"
       rowSx={(record: { isActive: boolean }) => ({

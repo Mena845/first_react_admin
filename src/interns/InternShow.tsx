@@ -37,7 +37,12 @@ export const InternShow = () => (
         <TextField source="lastName" label="Nom" />
       </Box>
       <EmailField source="email" label="Email" sx={{ fontWeight: 500 }} />
-      <ReferenceField source="mentorId" reference="Employees" label="Manager">
+      <ReferenceField
+        source="mentorId"
+        reference="Employees"
+        label="Manager"
+        link="show"
+      >
         <FunctionField
           render={(record) => `${record.firstName} ${record.lastName}`}
         />

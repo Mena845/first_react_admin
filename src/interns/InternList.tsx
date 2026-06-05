@@ -76,11 +76,33 @@ export const InternList = () => {
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 1 }}>
-        <Button variant="contained" onClick={() => setOpen(true)}>
+        <Button
+          variant="contained"
+          onClick={() => setOpen(true)}
+          sx={{
+            borderRadius: 3,
+            px: 3,
+            py: 1,
+            fontWeight: 700,
+            fontSize: "0.9rem",
+            boxShadow: "0 2px 8px rgba(25,118,210,0.3)",
+            "&:hover": { boxShadow: "0 4px 16px rgba(25,118,210,0.4)" },
+          }}
+        >
           Ajouter stagiaire rapide
         </Button>
       </Box>
-      <List>
+      <List
+        sx={{
+          "& .RaList-actions": {
+            backgroundColor: "#f8fbff",
+            borderRadius: 3,
+            p: 2,
+            mb: 1,
+          },
+          "& .RaList-main": { borderRadius: 3 },
+        }}
+      >
         <DataTable
           sx={{
             "& .RaDataTable-headerCell": {
@@ -96,7 +118,7 @@ export const InternList = () => {
             <EmailField source="email" />
           </DataTable.Col>
           <DataTable.Col source="mentorId" label="Manager">
-            <ReferenceField source="mentorId" reference="Employees">
+            <ReferenceField source="mentorId" reference="Employees" link="show">
               <FunctionField
                 render={(record) => `${record.firstName} ${record.lastName}`}
               />
