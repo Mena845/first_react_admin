@@ -16,6 +16,16 @@ import {
 import { Chip, Box, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
+const InternTitle = () => {
+  const record = useRecordContext<{ firstName: string; lastName: string }>();
+  if (!record) return null;
+  return (
+    <span>
+      {record.firstName} {record.lastName}
+    </span>
+  );
+};
+
 const InternShowActions = () => (
   <TopToolbar>
     <ListButton />
@@ -68,7 +78,7 @@ const ManagerCard = () => {
 };
 
 export const InternShow = () => (
-  <Show actions={<InternShowActions />}>
+  <Show title={<InternTitle />} actions={<InternShowActions />}>
     <SimpleShowLayout
       sx={{
         "& .RaLabeled-label": {

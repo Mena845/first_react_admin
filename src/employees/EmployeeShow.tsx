@@ -15,6 +15,16 @@ import {
 import { Chip, Box, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
+const EmployeeTitle = () => {
+  const record = useRecordContext<{ firstName: string; lastName: string }>();
+  if (!record) return null;
+  return (
+    <span>
+      {record.firstName} {record.lastName}
+    </span>
+  );
+};
+
 const EmployeeShowActions = () => (
   <TopToolbar>
     <ListButton />
@@ -60,7 +70,7 @@ const SupervisedInterns = () => {
 };
 
 export const EmployeeShow = () => (
-  <Show actions={<EmployeeShowActions />}>
+  <Show title={<EmployeeTitle />} actions={<EmployeeShowActions />}>
     <SimpleShowLayout
       sx={{
         "& .RaLabeled-label": {
