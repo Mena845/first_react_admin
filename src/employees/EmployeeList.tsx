@@ -3,11 +3,12 @@ import {
   Datagrid,
   TextField,
   NumberField,
-  BooleanField,
   SearchInput,
   SelectInput,
   ReferenceField,
+  FunctionField,
 } from "react-admin";
+import { Chip } from "@mui/material";
 
 const EmployeeFilter = [
   <SearchInput source="q" alwaysOn key="search" />,
@@ -22,21 +23,46 @@ const EmployeeFilter = [
   />,
 ];
 
+const ActiveChip = ({ record }: { record: { isActive: boolean } }) => (
+  <Chip
+    label={record.isActive ? "Actif" : "Inactif"}
+    color={record.isActive ? "success" : "default"}
+    size="small"
+    variant={record.isActive ? "filled" : "outlined"}
+  />
+);
+
 export const EmployeeList = () => (
   <List filters={EmployeeFilter} perPage={5}>
-    <Datagrid rowClick="show">
-      <TextField source="firstName" label="First Name" />
-      <TextField source="lastName" label="Last Name" />
+    <Datagrid
+      rowClick="show"
+      rowSx={(record: { isActive: boolean }) => ({
+        backgroundColor: record.isActive ? undefined : "#fafafa",
+        opacity: record.isActive ? 1 : 0.75,
+      })}
+      sx={{
+        "& .RaDatagrid-headerCell": {
+          fontWeight: 700,
+          backgroundColor: "#f0f7ff",
+        },
+      }}
+    >
+      <TextField source="firstName" label="Prénom" />
+      <TextField source="lastName" label="Nom" />
       <TextField source="email" label="Email" />
       <ReferenceField source="department" reference="Departments">
         <TextField source="name" />
       </ReferenceField>
       <NumberField
         source="salary"
-        label="Salary"
+        label="Salaire"
         options={{ style: "currency", currency: "EUR" }}
+        sx={{ fontWeight: 600, color: "success.dark" }}
       />
-      <BooleanField source="isActive" label="Active" />
+      <FunctionField
+        label="Statut"
+        render={(record) => <ActiveChip record={record} />}
+      />
     </Datagrid>
   </List>
 );

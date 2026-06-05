@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  BooleanField,
   DataTable,
   EditButton,
   EmailField,
@@ -26,6 +25,7 @@ import {
   FormControl,
   Alert,
   Box,
+  Chip,
 } from "@mui/material";
 
 export const InternList = () => {
@@ -81,30 +81,50 @@ export const InternList = () => {
         </Button>
       </Box>
       <List>
-        <DataTable>
+        <DataTable
+          sx={{
+            "& .RaDataTable-headerCell": {
+              fontWeight: 700,
+              backgroundColor: "#f0f7ff",
+            },
+          }}
+        >
           <DataTable.Col source="id" />
-          <DataTable.Col source="firstName" />
-          <DataTable.Col source="lastName" />
+          <DataTable.Col source="firstName" label="Prénom" />
+          <DataTable.Col source="lastName" label="Nom" />
           <DataTable.Col source="email">
             <EmailField source="email" />
           </DataTable.Col>
-          <DataTable.Col source="mentorId">
+          <DataTable.Col source="mentorId" label="Manager">
             <ReferenceField source="mentorId" reference="Employees">
               <FunctionField
                 render={(record) => `${record.firstName} ${record.lastName}`}
               />
             </ReferenceField>
           </DataTable.Col>
-          <DataTable.Col label="Department">
+          <DataTable.Col label="Département">
             <ReferenceField source="department" reference="Departments">
               <TextField source="name" />
             </ReferenceField>
           </DataTable.Col>
-          <DataTable.Col source="paid">
-            <BooleanField source="paid" />
+          <DataTable.Col source="paid" label="Payé">
+            <FunctionField
+              render={(record: { paid: boolean }) => (
+                <Chip
+                  label={record.paid ? "Payé" : "Impayé"}
+                  color={record.paid ? "success" : "warning"}
+                  size="small"
+                  variant={record.paid ? "filled" : "outlined"}
+                />
+              )}
+            />
           </DataTable.Col>
-          <DataTable.Col source="salary">
-            <NumberField source="salary" />
+          <DataTable.Col source="salary" label="Salaire">
+            <NumberField
+              source="salary"
+              options={{ style: "currency", currency: "EUR" }}
+              sx={{ fontWeight: 600, color: "success.dark" }}
+            />
           </DataTable.Col>
         </DataTable>
         <EditButton />

@@ -8,9 +8,11 @@ import {
   ReferenceField,
   Show,
   SimpleShowLayout,
-  BooleanField,
   DateField,
+  FunctionField,
 } from "react-admin";
+import { Chip, Box } from "@mui/material";
+
 const InternShowActions = () => (
   <TopToolbar>
     <ListButton />
@@ -20,26 +22,53 @@ const InternShowActions = () => (
 
 export const InternShow = () => (
   <Show actions={<InternShowActions />}>
-    <SimpleShowLayout>
-      <TextField source="firstName" label="First Name" />
-      <TextField source="lastName" label="Last Name" />
-      <EmailField source="email" label="Email" />
-      <ReferenceField source="mentorId" reference="Employees">
-        <TextField source="firstName" label="Mentor First Name" />
-        <TextField source="lastName" label="Mentor Last Name" />
+    <SimpleShowLayout
+      sx={{
+        "& .RaLabeled-label": {
+          fontWeight: 600,
+          color: "text.secondary",
+          minWidth: 140,
+        },
+        "& .MuiBox-root": { py: 1 },
+      }}
+    >
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <TextField source="firstName" label="Prénom" />
+        <TextField source="lastName" label="Nom" />
+      </Box>
+      <EmailField source="email" label="Email" sx={{ fontWeight: 500 }} />
+      <ReferenceField source="mentorId" reference="Employees" label="Manager">
+        <FunctionField
+          render={(record) => `${record.firstName} ${record.lastName}`}
+        />
       </ReferenceField>
-      <ReferenceField source="department" reference="Departments">
-        <TextField source="name" label="Department" />
+      <ReferenceField
+        source="department"
+        reference="Departments"
+        label="Département"
+      >
+        <TextField source="name" />
       </ReferenceField>
-      <BooleanField source="paid" label="Paid" />
+      <FunctionField
+        label="Payé"
+        render={(record: { paid: boolean }) => (
+          <Chip
+            label={record.paid ? "Payé" : "Impayé"}
+            color={record.paid ? "success" : "warning"}
+            size="small"
+            variant={record.paid ? "filled" : "outlined"}
+          />
+        )}
+      />
       <NumberField
         source="salary"
-        label="Salary"
+        label="Salaire"
         options={{ style: "currency", currency: "EUR" }}
+        sx={{ fontWeight: 700, color: "success.dark", fontSize: "1.1rem" }}
       />
       <DateField
         source="enterDate"
-        label="Entry Date"
+        label="Date d'entrée"
         options={{ dateStyle: "short" }}
       />
     </SimpleShowLayout>

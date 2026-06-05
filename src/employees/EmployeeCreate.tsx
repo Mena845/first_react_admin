@@ -13,9 +13,9 @@ import {
 
 export const EmployeeCreate = () => (
   <Create redirect="list">
-    <SimpleForm>
-      <TextInput source="firstName" label="First Name" validate={required()} />
-      <TextInput source="lastName" label="Last Name" validate={required()} />
+    <SimpleForm sx={{ "& .RaInput-root": { maxWidth: 500 } }}>
+      <TextInput source="firstName" label="Prénom" validate={required()} />
+      <TextInput source="lastName" label="Nom" validate={required()} />
       <TextInput
         source="email"
         label="Email"
@@ -24,16 +24,16 @@ export const EmployeeCreate = () => (
       <ReferenceInput
         source="department"
         reference="Departments"
-        label="Department"
+        label="Département"
       >
         <SelectInput optionText="name" />
       </ReferenceInput>
       <NumberInput
         source="salary"
-        label="Salary"
+        label="Salaire (€)"
         validate={[required(), minValue(0)]}
       />
-      <BooleanInput source="isActive" label="Active" defaultValue={true} />
+      <BooleanInput source="isActive" label="Actif" defaultValue={true} />
     </SimpleForm>
   </Create>
 );
