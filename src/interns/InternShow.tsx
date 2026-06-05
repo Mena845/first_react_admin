@@ -5,13 +5,16 @@ import {
   TextField,
   EmailField,
   NumberField,
-  ReferenceField,
   Show,
   SimpleShowLayout,
   DateField,
   FunctionField,
+  ReferenceField,
+  useRecordContext,
+  useGetList,
 } from "react-admin";
-import { Chip, Box } from "@mui/material";
+import { Chip, Box, Card, CardContent, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const InternShowActions = () => (
   <TopToolbar>
@@ -19,6 +22,50 @@ const InternShowActions = () => (
     <EditButton />
   </TopToolbar>
 );
+
+const ManagerCard = () => {
+  const record = useRecordContext<{ mentorId: number }>();
+  const { data: employees = [] } = useGetList("Employees", {
+    pagination: { page: 1, perPage: 1 },
+    sort: { field: "id", order: "ASC" },
+    filter: { id: record?.mentorId },
+  });
+
+  const manager = employees[0];
+  if (!manager) return null;
+
+  return (
+    <Card
+      variant="outlined"
+      sx={{ bgcolor: "#f0f7ff", borderColor: "#bbdefb", mt: 2 }}
+    >
+      <CardContent>
+        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+          Manager
+        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography
+            component={Link}
+            to={`/employees/${manager.id}/show`}
+            sx={{
+              fontWeight: 600,
+              fontSize: "1.05rem",
+              color: "primary.main",
+              textDecoration: "none",
+              "&:hover": { textDecoration: "underline" },
+            }}
+          >
+            {manager.firstName} {manager.lastName}
+          </Typography>
+          <Chip label={manager.isActive ? "Actif" : "Inactif"} size="small" />
+        </Box>
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+          {manager.email}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+};
 
 export const InternShow = () => (
   <Show actions={<InternShowActions />}>
@@ -37,16 +84,7 @@ export const InternShow = () => (
         <TextField source="lastName" label="Nom" />
       </Box>
       <EmailField source="email" label="Email" sx={{ fontWeight: 500 }} />
-      <ReferenceField
-        source="mentorId"
-        reference="Employees"
-        label="Manager"
-        link="show"
-      >
-        <FunctionField
-          render={(record) => `${record.firstName} ${record.lastName}`}
-        />
-      </ReferenceField>
+      <ManagerCard />
       <ReferenceField
         source="department"
         reference="Departments"
