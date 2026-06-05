@@ -8,14 +8,15 @@ import {
   required,
   minValue,
   email,
-    ReferenceInput,
+  useRecordContext,
+  ReferenceInput,
 } from "react-admin";
 import { EmployeeTitle } from "../Components/EmployeeTitle";
 
 
 export const EmployeeEdit = () => (
   <Edit title={<EmployeeTitle />}>
-    <SimpleForm>
+    <SimpleForm sx={{ "& .RaInput-root": { maxWidth: 500 } }}>
       <TextInput source="firstName" label="Prénom" validate={required()} />
       <TextInput source="lastName" label="Nom" validate={required()} />
       <TextInput
@@ -23,18 +24,19 @@ export const EmployeeEdit = () => (
         label="Email"
         validate={[required(), email()]}
       />
-       <ReferenceInput source="department" reference="Departments" label="Département">
-              <SelectInput optionText="name" validate={required()} />
-            </ReferenceInput>
+      <ReferenceInput
+        source="department"
+        reference="Departments"
+        label="Département"
+      >
+        <SelectInput optionText="name" validate={required()} />
+      </ReferenceInput>
       <NumberInput
         source="salary"
         label="Salaire (€)"
-        validate={[
-          required(),
-          minValue(1500, "Le salaire minimum est de 1500 €"),
-        ]}
+        validate={[required(), minValue(1500, "Minimum 1500 €")]}
       />
-      <BooleanInput source="active" label="Actif" />
+      <BooleanInput source="isActive" label="Actif" />
     </SimpleForm>
   </Edit>
 );

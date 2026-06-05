@@ -1,22 +1,92 @@
-import { Admin, Resource } from "react-admin";
+import { Admin, EditGuesser, Resource } from "react-admin";
 import { Layout } from "./Layout";
 import jsonServerProvider from "ra-data-json-server";
-import { Dashboard } from "./Dashboard/Dashboard";
-
+import { Dashboard } from "./Dashboard";
 import { EmployeeList } from "./employees/EmployeeList";
 import { EmployeeEdit } from "./employees/EmployeeEdit";
 import { EmployeeShow } from "./employees/EmployeeShow";
 import { EmployeeCreate } from "./employees/EmployeeCreate";
+import { InternList } from "./interns/InternList";
+import { InternCreate } from "./interns/InternCreate";
+import { InternShow } from "./interns/InternShow";
+import { createTheme } from "@mui/material/styles";
 
-import { InterneList } from "./Internes/InterneList";
-import { InterneCreate } from "./Internes/InterneCreate";
-import { InterneShow } from "./Internes/interneShow";
-import { InternEdit } from "./Internes/InterneEdit";
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#29b6f6",
+      light: "#81d4fa",
+      dark: "#0288d1",
+      contrastText: "#fff",
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          textTransform: "none",
+          fontWeight: 600,
+          padding: "6px 20px",
+        },
+        contained: {
+          boxShadow: "none",
+          "&:hover": {
+            boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+          },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          backgroundColor: "#fff",
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#1976d2",
+          },
+        },
+        notchedOutline: {
+          borderColor: "#e0e0e0",
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          backgroundColor: "#fff",
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          "&.Mui-focused": {
+            fontWeight: 600,
+          },
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: 6,
+        },
+      },
+    },
+  },
+});
 
 const dataProvider = jsonServerProvider("http://localhost:3002");
 
 export const App = () => (
-  <Admin layout={Layout} dataProvider={dataProvider} dashboard={Dashboard}>
+  <Admin
+    dashboard={Dashboard}
+    layout={Layout}
+    dataProvider={dataProvider}
+    theme={theme}
+  >
     <Resource
       name="Employees"
       list={EmployeeList}
@@ -25,11 +95,11 @@ export const App = () => (
       show={EmployeeShow}
     />
     <Resource
-      name="Internes"
-      list={InterneList}
-      create={InterneCreate}
-      edit={InternEdit}
-      show={InterneShow}
+      name="interns"
+      list={InternList}
+      create={InternCreate}
+      edit={EditGuesser}
+      show={InternShow}
     />
   </Admin>
 );

@@ -13,9 +13,9 @@ import { SalaryInput  } from "../Components/SalaryInput";
 import { MentorInput } from "../Components/MentorInput";
 
 
-export const InterneCreate = () => (
+export const InternCreate = () => (
   <Create redirect="list">
-    <SimpleForm>
+    <SimpleForm sx={{ "& .RaInput-root": { maxWidth: 500 } }}>
       <TextInput source="firstName" label="Prénom" validate={required()} />
       <TextInput source="lastName" label="Nom" validate={required()} />
       <TextInput
@@ -23,22 +23,16 @@ export const InterneCreate = () => (
         label="Email"
         validate={[required(), email()]}
       />
-      <ReferenceInput
-    source="department"
-    reference="Departments"
-    label="Département"
->
-    <SelectInput
-        optionText="name"
-        validate={required()}
-    />
-</ReferenceInput>
-
-      <MentorInput />
-      <BooleanInput source="paid" label="Payé" validate={required()}/>
-      <SalaryInput />
-      <DateInput
-      source="enterDate" label="Date d'Entrée"/>
+      <ReferenceInput source="mentorId" reference="Employees" label="Manager">
+        <SelectInput optionText="firstName" validate={required()} />
+      </ReferenceInput>
+      <BooleanInput source="paid" label="Payé" validate={required()} />
+      <NumberInput
+        source="salary"
+        label="Salaire (€)"
+        validate={[required(), minValue(0)]}
+      />
+      <DateInput source="enterDate" label="Date d'entrée" />
     </SimpleForm>
   </Create>
 );
