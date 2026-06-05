@@ -1,7 +1,7 @@
 import { Admin, EditGuesser, Resource } from "react-admin";
 import { Layout } from "./Layout";
 import jsonServerProvider from "ra-data-json-server";
-import { Dashboard } from "./Dashboard";
+import { Dashboard } from "./Dashboard/Dashboard";
 import { EmployeeList } from "./employees/EmployeeList";
 import { EmployeeEdit } from "./employees/EmployeeEdit";
 import { EmployeeShow } from "./employees/EmployeeShow";
