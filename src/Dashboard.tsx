@@ -1,4 +1,5 @@
 import { useGetList } from "react-admin";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -61,29 +62,38 @@ const StatCard = ({
   label,
   value,
   color,
+  to,
 }: {
   label: string;
   value: string | number;
   color?: string;
-}) => (
-  <Card
-    sx={{
-      flex: 1,
-      minWidth: 200,
-      borderTop: 4,
-      borderColor: color ?? "primary.main",
-    }}
-  >
-    <CardContent>
-      <Typography variant="h4" fontWeight="bold">
-        {value}
-      </Typography>
-      <Typography variant="body2" color="text.secondary">
-        {label}
-      </Typography>
-    </CardContent>
-  </Card>
-);
+  to: string;
+}) => {
+  const navigate = useNavigate();
+  return (
+    <Card
+      sx={{
+        flex: 1,
+        minWidth: 200,
+        borderTop: 4,
+        borderColor: color ?? "primary.main",
+        cursor: "pointer",
+        transition: "transform 0.15s, box-shadow 0.15s",
+        "&:hover": { transform: "translateY(-2px)", boxShadow: 4 },
+      }}
+      onClick={() => navigate(to)}
+    >
+      <CardContent>
+        <Typography variant="h4" fontWeight="bold">
+          {value}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {label}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+};
 
 const formatCurrency = (amount: number) =>
   new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(
@@ -91,6 +101,7 @@ const formatCurrency = (amount: number) =>
   );
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   const { data: employees = [] } = useGetList<Employee>("Employees", {
     pagination: { page: 1, perPage: 100 },
     sort: { field: "id", order: "ASC" },
@@ -179,26 +190,31 @@ export const Dashboard = () => {
           label="Employés"
           value={employees.length}
           color="primary.main"
+          to="/employees"
         />
         <StatCard
           label="Employés actifs"
           value={activeEmployees.length}
           color="success.main"
+          to="/employees"
         />
         <StatCard
           label="Stagiaires"
           value={interns.length}
           color="warning.main"
+          to="/interns"
         />
         <StatCard
           label="Salaire moyen (employés)"
           value={formatCurrency(avgSalaryEmployees)}
           color="info.main"
+          to="/employees"
         />
         <StatCard
           label="Masse salariale totale"
           value={formatCurrency(totalSalary)}
           color="error.main"
+          to="/employees"
         />
       </Stack>
 
@@ -210,7 +226,15 @@ export const Dashboard = () => {
         flexWrap="wrap"
         sx={{ mb: 3 }}
       >
-        <Card sx={{ flex: 1, minWidth: 350 }}>
+        <Card
+          sx={{
+            flex: 1,
+            minWidth: 350,
+            cursor: "pointer",
+            "&:hover": { boxShadow: 4 },
+          }}
+          onClick={() => navigate("/employees")}
+        >
           <CardContent>
             <Typography variant="h6" gutterBottom>
               Salaire moyen par département
@@ -226,7 +250,15 @@ export const Dashboard = () => {
             </ResponsiveContainer>
           </CardContent>
         </Card>
-        <Card sx={{ flex: 1, minWidth: 350 }}>
+        <Card
+          sx={{
+            flex: 1,
+            minWidth: 350,
+            cursor: "pointer",
+            "&:hover": { boxShadow: 4 },
+          }}
+          onClick={() => navigate("/employees")}
+        >
           <CardContent>
             <Typography variant="h6" gutterBottom>
               Employés par département
@@ -279,7 +311,14 @@ export const Dashboard = () => {
                 </TableHead>
                 <TableBody>
                   {recentInterns.map((intern) => (
-                    <TableRow key={intern.id}>
+                    <TableRow
+                      key={intern.id}
+                      sx={{
+                        cursor: "pointer",
+                        "&:hover": { bgcolor: "#f5f5f5" },
+                      }}
+                      onClick={() => navigate(`/interns/${intern.id}/show`)}
+                    >
                       <TableCell>
                         {intern.firstName} {intern.lastName}
                       </TableCell>
@@ -320,7 +359,14 @@ export const Dashboard = () => {
                 </TableHead>
                 <TableBody>
                   {recentEmployees.map((emp) => (
-                    <TableRow key={emp.id}>
+                    <TableRow
+                      key={emp.id}
+                      sx={{
+                        cursor: "pointer",
+                        "&:hover": { bgcolor: "#f5f5f5" },
+                      }}
+                      onClick={() => navigate(`/employees/${emp.id}/show`)}
+                    >
                       <TableCell>
                         {emp.firstName} {emp.lastName}
                       </TableCell>

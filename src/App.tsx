@@ -12,6 +12,14 @@ import { InternShow } from "./interns/InternShow";
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#29b6f6",
+      light: "#81d4fa",
+      dark: "#0288d1",
+      contrastText: "#fff",
+    },
+  },
   components: {
     MuiButton: {
       styleOverrides: {
