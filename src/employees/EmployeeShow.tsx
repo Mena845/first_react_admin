@@ -21,19 +21,19 @@ const EmployeeShowActions = () => (
 export const EmployeeShow = () => (
   <Show actions={<EmployeeShowActions />}>
     <SimpleShowLayout>
-      <TextField source="firstName" label="Prénom" />
-      <TextField source="lastName" label="Nom" />
+      <TextField source="firstName" label="First Name" />
+      <TextField source="lastName" label="Last Name" />
       <EmailField source="email" label="Email" />
       <ReferenceField source="department" reference="Departments">
         <TextField source="name" />
       </ReferenceField>
       <NumberField
         source="salary"
-        label="Salaire"
+        label="Salary"
         options={{ style: "currency", currency: "EUR" }}
       />
-      <BooleanField source="active" label="Actif" />
-         <EditButton />
+      <BooleanField source="isActive" label="Active" />
+      <EditButton />
     </SimpleShowLayout>
   </Show>
 );

@@ -14,22 +14,26 @@ import {
 export const EmployeeCreate = () => (
   <Create redirect="list">
     <SimpleForm>
-      <TextInput source="firstName" label="Prénom" validate={required()} />
-      <TextInput source="lastName" label="Nom" validate={required()} />
+      <TextInput source="firstName" label="First Name" validate={required()} />
+      <TextInput source="lastName" label="Last Name" validate={required()} />
       <TextInput
         source="email"
         label="Email"
         validate={[required(), email()]}
       />
-      <ReferenceInput source="department" reference="Departments" label="Département">
+      <ReferenceInput
+        source="department"
+        reference="Departments"
+        label="Department"
+      >
         <SelectInput optionText="name" />
       </ReferenceInput>
       <NumberInput
         source="salary"
-        label="Salaire"
+        label="Salary"
         validate={[required(), minValue(0)]}
       />
-      <BooleanInput source="isActive" label="Actif" defaultValue={true} />
+      <BooleanInput source="isActive" label="Active" defaultValue={true} />
     </SimpleForm>
   </Create>
 );

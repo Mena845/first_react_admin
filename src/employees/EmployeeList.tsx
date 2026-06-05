@@ -4,41 +4,39 @@ import {
   TextField,
   NumberField,
   BooleanField,
-  EditButton,
-  DeleteButton,
   SearchInput,
   SelectInput,
   ReferenceField,
 } from "react-admin";
 
 const EmployeeFilter = [
-  <SearchInput source="q" alwaysOn />,
+  <SearchInput source="q" alwaysOn key="search" />,
   <SelectInput
-    source="isPermanent"
+    source="department"
     choices={[
-      { id: "Informatiquq", name: "Informatique" },
-      { id: "Marketing", name: "Marketing" },
-      { id: "RH", name: "RH" },
+      { id: "1", name: "Informatique" },
+      { id: "2", name: "Marketing" },
+      { id: "3", name: "RH" },
     ]}
+    key="department"
   />,
 ];
 
 export const EmployeeList = () => (
   <List filters={EmployeeFilter} perPage={5}>
     <Datagrid rowClick="show">
-      <TextField source="firstName" label="Prénom" />
-      <TextField source="lastName" label="Nom" />
+      <TextField source="firstName" label="First Name" />
+      <TextField source="lastName" label="Last Name" />
       <TextField source="email" label="Email" />
-        <ReferenceField source="department" reference="Departments">
+      <ReferenceField source="department" reference="Departments">
         <TextField source="name" />
       </ReferenceField>
-    
       <NumberField
         source="salary"
-        label="Salaire"
+        label="Salary"
         options={{ style: "currency", currency: "EUR" }}
       />
-      <BooleanField source="active" label="Actif" />
+      <BooleanField source="isActive" label="Active" />
     </Datagrid>
   </List>
 );

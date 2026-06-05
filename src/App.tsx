@@ -1,13 +1,13 @@
-import { Admin, Create, EditGuesser, ListGuesser, Resource, ShowGuesser } from "react-admin";
+import { Admin, EditGuesser, Resource } from "react-admin";
 import { Layout } from "./Layout";
 import jsonServerProvider from "ra-data-json-server";
 import { EmployeeList } from "./employees/EmployeeList";
 import { EmployeeEdit } from "./employees/EmployeeEdit";
 import { EmployeeShow } from "./employees/EmployeeShow";
 import { EmployeeCreate } from "./employees/EmployeeCreate";
-import { InterneList } from "./Internes/InterneList";
-import { InterneCreate } from "./Internes/InterneCreate";
-import { InterneShow } from "./Internes/interneShow";
+import { InternList } from "./interns/InternList";
+import { InternCreate } from "./interns/InternCreate";
+import { InternShow } from "./interns/InternShow";
 
 const dataProvider = jsonServerProvider("http://localhost:3002");
 
@@ -21,11 +21,11 @@ export const App = () => (
       show={EmployeeShow}
     />
     <Resource
-    name="internes"
-    list={InterneList}
-    create={InterneCreate}
-    edit={EditGuesser}
-    show={InterneShow}
+      name="interns"
+      list={InternList}
+      create={InternCreate}
+      edit={EditGuesser}
+      show={InternShow}
     />
   </Admin>
 );
