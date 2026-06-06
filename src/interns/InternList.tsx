@@ -5,8 +5,10 @@ import {
   EmailField,
   FunctionField,
   List,
+  ListActions,
   NumberField,
   ReferenceField,
+  SearchInput,
   TextField,
   useCreate,
   useRefresh,
@@ -73,26 +75,31 @@ export const InternList = () => {
     setError(null);
   };
 
+  const internFilters = [<SearchInput source="q" alwaysOn />];
+
   return (
     <>
-      <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 1 }}>
-        <Button
-          variant="contained"
-          onClick={() => setOpen(true)}
-          sx={{
-            borderRadius: 3,
-            px: 3,
-            py: 1,
-            fontWeight: 700,
-            fontSize: "0.9rem",
-            boxShadow: "0 2px 8px rgba(25,118,210,0.3)",
-            "&:hover": { boxShadow: "0 4px 16px rgba(25,118,210,0.4)" },
-          }}
-        >
-          Ajouter stagiaire rapide
-        </Button>
-      </Box>
       <List
+        filters={internFilters}
+        actions={
+          <ListActions>
+            <Button
+              variant="contained"
+              onClick={() => setOpen(true)}
+              sx={{
+                borderRadius: 3,
+                px: 3,
+                py: 1,
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                boxShadow: "0 2px 8px rgba(25,118,210,0.3)",
+                "&:hover": { boxShadow: "0 4px 16px rgba(25,118,210,0.4)" },
+              }}
+            >
+              Ajouter stagiaire rapide
+            </Button>
+          </ListActions>
+        }
         sx={{
           "& .RaList-actions": {
             backgroundColor: "#f8fbff",
