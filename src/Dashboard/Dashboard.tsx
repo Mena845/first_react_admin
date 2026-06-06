@@ -14,7 +14,10 @@ import {
   TableRow,
   Paper,
   Chip,
+  Button,
 } from "@mui/material";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import {
   BarChart,
   Bar,
@@ -177,6 +180,24 @@ export const Dashboard = () => {
       <Typography variant="h4" gutterBottom>
         Tableau de bord
       </Typography>
+
+      {/* Action Buttons */}
+      <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+        <Button
+          variant="contained"
+          startIcon={<PersonAddIcon />}
+          onClick={() => navigate("/employees/create")}
+        >
+          Créer employé
+        </Button>
+        <Button
+          variant="contained"
+          startIcon={<GroupAddIcon />}
+          onClick={() => navigate("/interns/create")}
+        >
+          Créer interne
+        </Button>
+      </Stack>
 
       {/* Stats Cards */}
       <Stack
