@@ -25,9 +25,14 @@ export const InternCreate = () => (
         label="Email"
         validate={[required(), email()]}
       />
-      <ReferenceInput source="mentorId" reference="Employees" label="Manager">
-        <SelectInput optionText="firstName" validate={required()} />
+      <ReferenceInput
+        source="department"
+        reference="Departments"
+        label="Département"
+      >
+        <SelectInput optionText="name" validate={required()} />
       </ReferenceInput>
+      <MentorInput />
       <BooleanInput source="paid" label="Payé" validate={required()} />
       <NumberInput
         source="salary"
