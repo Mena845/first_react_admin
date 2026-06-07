@@ -8,7 +8,9 @@ import {
   ListActions,
   NumberField,
   ReferenceField,
+  ReferenceInput,
   SearchInput,
+  SelectInput,
   TextField,
   useCreate,
   useRefresh,
@@ -75,7 +77,20 @@ export const InternList = () => {
     setError(null);
   };
 
-  const internFilters = [<SearchInput source="q" alwaysOn />];
+  const internFilters = [
+    <SearchInput source="q" alwaysOn />,
+    <ReferenceInput source="department" reference="Departments" label="Département">
+      <SelectInput optionText="name" />
+    </ReferenceInput>,
+    <SelectInput
+      source="paid"
+      label="Payé"
+      choices={[
+        { id: true, name: "Payé" },
+        { id: false, name: "Impayé" },
+      ]}
+    />,
+  ];
 
   return (
     <>
