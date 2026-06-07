@@ -8,12 +8,9 @@ import {
   ReferenceInput,
   DateInput,
   BooleanInput,
-  NumberInput,
-  minValue,
 } from "react-admin";
-import { SalaryInput  } from "../Components/SalaryInput";
+import { SalaryInput } from "../Components/SalaryInput";
 import { MentorInput } from "../Components/MentorInput";
-
 
 export const InternCreate = () => (
   <Create redirect="list">
@@ -34,11 +31,7 @@ export const InternCreate = () => (
       </ReferenceInput>
       <MentorInput />
       <BooleanInput source="paid" label="Payé" validate={required()} />
-      <NumberInput
-        source="salary"
-        label="Salaire (€)"
-        validate={[required(), minValue(0)]}
-      />
+      <SalaryInput />
       <DateInput source="enterDate" label="Date d'entrée" />
     </SimpleForm>
   </Create>
