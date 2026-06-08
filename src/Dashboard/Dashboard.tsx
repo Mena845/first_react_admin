@@ -31,6 +31,8 @@ import {
   Cell,
   Legend,
 } from "recharts";
+import { StatCard } from "../Components/StatCard";
+import { formatCurrency } from "../Components/formatCurrency";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
 
@@ -60,48 +62,6 @@ type Department = {
   id: number;
   name: string;
 };
-
-const StatCard = ({
-  label,
-  value,
-  color,
-  to,
-}: {
-  label: string;
-  value: string | number;
-  color?: string;
-  to: string;
-}) => {
-  const navigate = useNavigate();
-  return (
-    <Card
-      sx={{
-        flex: 1,
-        minWidth: 200,
-        borderTop: 4,
-        borderColor: color ?? "primary.main",
-        cursor: "pointer",
-        transition: "transform 0.15s, box-shadow 0.15s",
-        "&:hover": { transform: "translateY(-2px)", boxShadow: 4 },
-      }}
-      onClick={() => navigate(to)}
-    >
-      <CardContent>
-        <Typography variant="h4" fontWeight="bold">
-          {value}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {label}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-};
-
-const formatCurrency = (amount: number) =>
-  new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" }).format(
-    amount,
-  );
 
 export const Dashboard = () => {
   const navigate = useNavigate();

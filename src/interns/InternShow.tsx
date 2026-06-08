@@ -1,7 +1,4 @@
 import {
-  TopToolbar,
-  ListButton,
-  EditButton,
   TextField,
   EmailField,
   NumberField,
@@ -11,74 +8,22 @@ import {
   FunctionField,
   ReferenceField,
   useRecordContext,
-  useGetList,
 } from "react-admin";
-import { Chip, Box, Card, CardContent, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Chip, Box } from "@mui/material";
+import { InternShowActions } from "../Components/InternShowActions";
+import { ManagerCard } from "../Components/ManagerCard";
 
-const InternTitle = () => {
+export const InternShow = () => {
   const record = useRecordContext<{ firstName: string; lastName: string }>();
-  if (!record) return null;
   return (
-    <span>
-      {record.firstName} {record.lastName}
-    </span>
-  );
-};
-
-const InternShowActions = () => (
-  <TopToolbar>
-    <ListButton />
-    <EditButton />
-  </TopToolbar>
-);
-
-const ManagerCard = () => {
-  const record = useRecordContext<{ mentorId: number }>();
-  const { data: employees = [] } = useGetList("Employees", {
-    pagination: { page: 1, perPage: 1 },
-    sort: { field: "id", order: "ASC" },
-    filter: { id: record?.mentorId },
-  });
-
-  const manager = employees[0];
-  if (!manager) return null;
-
-  return (
-    <Card
-      variant="outlined"
-      sx={{ bgcolor: "#f0f7ff", borderColor: "#bbdefb", mt: 2 }}
-    >
-      <CardContent>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-          Manager
-        </Typography>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <Typography
-            component={Link}
-            to={`/employees/${manager.id}/show`}
-            sx={{
-              fontWeight: 600,
-              fontSize: "1.05rem",
-              color: "primary.main",
-              textDecoration: "none",
-              "&:hover": { textDecoration: "underline" },
-            }}
-          >
-            {manager.firstName} {manager.lastName}
-          </Typography>
-          <Chip label={manager.isActive ? "Actif" : "Inactif"} size="small" />
-        </Box>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
-          {manager.email}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-};
-
-export const InternShow = () => (
-  <Show title={<InternTitle />} actions={<InternShowActions />}>
+  <Show
+    title={
+      record ? (
+        <span>{record.firstName} {record.lastName}</span>
+      ) : null
+    }
+    actions={<InternShowActions />}
+  >
     <SimpleShowLayout
       sx={{
         "& .RaLabeled-label": {
@@ -127,3 +72,4 @@ export const InternShow = () => (
     </SimpleShowLayout>
   </Show>
 );
+};

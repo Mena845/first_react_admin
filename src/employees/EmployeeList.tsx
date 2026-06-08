@@ -3,48 +3,11 @@ import {
   Datagrid,
   TextField,
   NumberField,
-  SearchInput,
-  SelectInput,
   ReferenceField,
   FunctionField,
 } from "react-admin";
-import { Chip } from "@mui/material";
-
-const EmployeeFilter = [
-  <SearchInput
-    source="q"
-    alwaysOn
-    key="search"
-    sx={{
-      "& .MuiInputBase-root": { backgroundColor: "#f5f9ff", borderRadius: 3 },
-    }}
-  />,
-  <SelectInput
-    source="department"
-    choices={[
-      { id: "1", name: "Informatique" },
-      { id: "2", name: "Marketing" },
-      { id: "3", name: "RH" },
-    ]}
-    key="department"
-    sx={{
-      "& .MuiInputBase-root": {
-        backgroundColor: "#f5f9ff",
-        borderRadius: 3,
-        minWidth: 160,
-      },
-    }}
-  />,
-];
-
-const ActiveChip = ({ record }: { record: { isActive: boolean } }) => (
-  <Chip
-    label={record.isActive ? "Actif" : "Inactif"}
-    color={record.isActive ? "success" : "default"}
-    size="small"
-    variant={record.isActive ? "filled" : "outlined"}
-  />
-);
+import { EmployeeFilter } from "../Components/EmployeeFiltersList";
+import { ActiveChip } from "../Components/ActiveChip";
 
 export const EmployeeList = () => (
   <List

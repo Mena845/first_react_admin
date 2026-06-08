@@ -4,73 +4,16 @@ import {
   TextField,
   NumberField,
   EmailField,
-  TopToolbar,
-  ListButton,
-  EditButton,
   ReferenceField,
   FunctionField,
-  useRecordContext,
-  useGetList,
+  EditButton,
 } from "react-admin";
-import { Chip, Box, Card, CardContent, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-
-const EmployeeTitle = () => {
-  const record = useRecordContext<{ firstName: string; lastName: string }>();
-  if (!record) return null;
-  return (
-    <span>
-      {record.firstName} {record.lastName}
-    </span>
-  );
-};
-
-const EmployeeShowActions = () => (
-  <TopToolbar>
-    <ListButton />
-    <EditButton />
-  </TopToolbar>
-);
-
-const SupervisedInterns = () => {
-  const record = useRecordContext<{ id: number }>();
-  const { data: interns = [] } = useGetList("Interns", {
-    pagination: { page: 1, perPage: 100 },
-    sort: { field: "id", order: "ASC" },
-    filter: { mentorId: record?.id },
-  });
-
-  if (!interns.length) return null;
-
-  return (
-    <Card sx={{ mt: 3 }}>
-      <CardContent>
-        <Typography variant="h6" gutterBottom>
-          Stagiaires encadrés ({interns.length})
-        </Typography>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
-          {interns.map((intern) => (
-            <Typography
-              key={intern.id}
-              component={Link}
-              to={`/interns/${intern.id}/show`}
-              sx={{
-                color: "primary.main",
-                textDecoration: "none",
-                "&:hover": { textDecoration: "underline" },
-              }}
-            >
-              {intern.firstName} {intern.lastName}
-            </Typography>
-          ))}
-        </Box>
-      </CardContent>
-    </Card>
-  );
-};
+import { Chip, Box } from "@mui/material";
+import { EmployeeShowActions } from "../Components/EmployeeShowActions";
+import { SupervisedInterns } from "../Components/SupervisedInterns";
 
 export const EmployeeShow = () => (
-  <Show title={<EmployeeTitle />} actions={<EmployeeShowActions />}>
+  <Show actions={<EmployeeShowActions />}>
     <SimpleShowLayout
       sx={{
         "& .RaLabeled-label": {

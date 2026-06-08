@@ -8,9 +8,6 @@ import {
   ListActions,
   NumberField,
   ReferenceField,
-  ReferenceInput,
-  SearchInput,
-  SelectInput,
   TextField,
   useCreate,
   useRefresh,
@@ -28,9 +25,9 @@ import {
   InputLabel,
   FormControl,
   Alert,
-  Box,
   Chip,
 } from "@mui/material";
+import { internFilters } from "../Components/internFiltersList";
 
 export const InternList = () => {
   const [open, setOpen] = useState(false);
@@ -76,21 +73,6 @@ export const InternList = () => {
     setOpen(false);
     setError(null);
   };
-
-  const internFilters = [
-    <SearchInput source="q" alwaysOn />,
-    <ReferenceInput source="department" reference="Departments" label="Département">
-      <SelectInput optionText="name" />
-    </ReferenceInput>,
-    <SelectInput
-      source="paid"
-      label="Payé"
-      choices={[
-        { id: true, name: "Payé" },
-        { id: false, name: "Impayé" },
-      ]}
-    />,
-  ];
 
   return (
     <>
