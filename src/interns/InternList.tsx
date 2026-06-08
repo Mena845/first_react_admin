@@ -62,8 +62,9 @@ export const InternList = () => {
           setMentorId("");
           refresh();
         },
-        onError: (err: Error) => {
-          setError(err.message || "Erreur lors de la création du stagiaire");
+        onError: (...args: any[]) => {
+          const err = args[0] as any;
+          setError(err?.message || "Erreur lors de la création du stagiaire");
         },
       },
     );
