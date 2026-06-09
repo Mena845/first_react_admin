@@ -11,6 +11,7 @@ import {
 import { Chip, Box } from "@mui/material";
 import { EmployeeShowActions } from "../Components/EmployeeShowActions";
 import { SupervisedInterns } from "../Components/SupervisedInterns";
+import { DepartmentColleagues } from "../Components/DepartmentColleagues";
 import { EmployeesShowName } from "../Components/EmployeesShowName";
 
 export const EmployeeShow = () => (
@@ -56,6 +57,7 @@ export const EmployeeShow = () => (
       />
       <EditButton />
       <SupervisedInterns />
+      <DepartmentColleagues />
     </SimpleShowLayout>
   </Show>
 );
