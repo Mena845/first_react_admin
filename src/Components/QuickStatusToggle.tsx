@@ -7,16 +7,17 @@ export const QuickStatusToggle = () => {
 
   if (!record) return null;
 
-  const handleClick = () => {
-  update("Employees", {
-    id: record.id,
-    data: {
-      ...record,                        
-      isActive: !record.isActive,       
-    },
-    previousData: record,
-  });
-};
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    update("Employees", {
+      id: record.id,
+      data: {
+        ...record,
+        isActive: !record.isActive,
+      },
+    });
+  };
+
   return (
     <Button
       variant="contained"
