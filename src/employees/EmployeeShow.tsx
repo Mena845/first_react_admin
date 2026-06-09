@@ -11,9 +11,10 @@ import {
 import { Chip, Box } from "@mui/material";
 import { EmployeeShowActions } from "../Components/EmployeeShowActions";
 import { SupervisedInterns } from "../Components/SupervisedInterns";
+import { EmployeesShowName } from "../Components/EmployeesShowName";
 
 export const EmployeeShow = () => (
-  <Show actions={<EmployeeShowActions />}>
+  <Show title={<EmployeesShowName />} actions={<EmployeeShowActions />}>
     <SimpleShowLayout
       sx={{
         "& .RaLabeled-label": {

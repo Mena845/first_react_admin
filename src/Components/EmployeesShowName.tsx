@@ -4,7 +4,7 @@ export const EmployeesShowName = () => {
   if (!record) return null;
   return (
     <span>
-       Employee : {record.firstName} {record.lastName}
+       {record.firstName}
     </span>
   );
   

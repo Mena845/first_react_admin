@@ -7,21 +7,15 @@ import {
   DateField,
   FunctionField,
   ReferenceField,
-  useRecordContext,
 } from "react-admin";
 import { Chip, Box } from "@mui/material";
 import { InternShowActions } from "../Components/InternShowActions";
 import { ManagerCard } from "../Components/ManagerCard";
+import { InternShowName } from "../Components/InternShowName";
 
-export const InternShow = () => {
-  const record = useRecordContext<{ firstName: string; lastName: string }>();
-  return (
+export const InternShow = () => (
   <Show
-    title={
-      record ? (
-        <span>{record.firstName} {record.lastName}</span>
-      ) : null
-    }
+    title={<InternShowName />}
     actions={<InternShowActions />}
   >
     <SimpleShowLayout
@@ -72,4 +66,3 @@ export const InternShow = () => {
     </SimpleShowLayout>
   </Show>
 );
-};

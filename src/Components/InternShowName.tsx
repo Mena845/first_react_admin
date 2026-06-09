@@ -4,7 +4,7 @@ export const InternShowName = () => {
 
     return record ? (
         <span>
-          interne : {record.firstName} {record.lastName}
+          {record.firstName}
         </span>
     ) : null;
 };
