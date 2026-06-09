@@ -8,6 +8,7 @@ import {
 } from "react-admin";
 import { EmployeeFilter } from "../Components/EmployeeFiltersList";
 import { ActiveChip } from "../Components/ActiveChip";
+import { QuickStatusToggle } from "../Components/QuickStatusToggle";
 
 export const EmployeeList = () => (
   <List
@@ -51,6 +52,14 @@ export const EmployeeList = () => (
       <FunctionField
         label="Statut"
         render={(record) => <ActiveChip record={record} />}
+      />
+      <FunctionField
+        label="Actions"
+        render={(record) => (
+          <span onClick={(e) => e.stopPropagation()}>
+            <QuickStatusToggle />
+          </span>
+        )}
       />
     </Datagrid>
   </List>
