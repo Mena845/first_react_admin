@@ -10,8 +10,8 @@ import {
 } from "react-admin";
 import { Chip, Box } from "@mui/material";
 import { EmployeeShowActions } from "../Components/EmployeeShowActions";
-import { SupervisedInterns } from "../Components/SupervisedInterns";
-import { DepartmentColleagues } from "../Components/DepartmentColleagues";
+import { InternsByManager } from "../Components/InternsByManager";
+import { DepartmentStats } from "../Components/DepartmentStats";
 import { EmployeesShowName } from "../Components/EmployeesShowName";
 
 export const EmployeeShow = () => (
@@ -56,8 +56,8 @@ export const EmployeeShow = () => (
         )}
       />
       <EditButton />
-      <SupervisedInterns />
-      <DepartmentColleagues />
+      <InternsByManager />
+      <DepartmentStats />
     </SimpleShowLayout>
   </Show>
 );
