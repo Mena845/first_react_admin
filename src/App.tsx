@@ -1,6 +1,6 @@
 import { Admin, EditGuesser, Resource } from "react-admin";
 import { Layout } from "./Layout";
-import jsonServerProvider from "ra-data-json-server";
+import { dataProvider } from "./dataProvider";
 import { Dashboard } from "./Dashboard/Dashboard";
 import { EmployeeList } from "./employees/EmployeeList";
 import { EmployeeEdit } from "./employees/EmployeeEdit";
@@ -78,8 +78,6 @@ const theme = createTheme({
     },
   },
 });
-
-const dataProvider = jsonServerProvider("http://localhost:3002");
 
 export const App = () => (
   <Admin
