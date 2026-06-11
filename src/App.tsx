@@ -10,6 +10,7 @@ import { InternList } from "./interns/InternList";
 import { InternCreate } from "./interns/InternCreate";
 import { InternShow } from "./interns/InternShow";
 import { createTheme } from "@mui/material/styles";
+import authProvider from "./authProvider";
 
 const theme = createTheme({
   palette: {
@@ -82,9 +83,10 @@ const dataProvider = jsonServerProvider("http://localhost:3002");
 
 export const App = () => (
   <Admin
+    authProvider={authProvider}
+    dataProvider={dataProvider}
     dashboard={Dashboard}
     layout={Layout}
-    dataProvider={dataProvider}
     theme={theme}
   >
     <Resource
